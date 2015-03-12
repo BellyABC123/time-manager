@@ -93,7 +93,13 @@
     switch (sender.tag) {
         //逐个删除 →
         case 13:
-
+            if ((priceFloatNum - (int)priceFloatNum) > 0 ) {
+                priceFloatNum = (int)priceFloatNum;
+                isPointClick = NO;
+            }else{
+                priceFloatNum = (int)priceFloatNum/10;
+            }
+             [_priceLabel setText:[NSString stringWithFormat:@"¥%.1f",priceFloatNum]];
             break;
         //归零 C
         case 11:
