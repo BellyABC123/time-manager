@@ -10,7 +10,7 @@
 
 @interface CreateItemViewController (){
     BOOL _isTaped;
-    UIView *newView;
+    CalendarView *calendarView;
     BOOL isPointClick;
     
 
@@ -31,18 +31,13 @@
     [_topViewOfKeyboardView addGestureRecognizer:tapGesture];
    
     //初始化日历控件的承载视图时 在屏幕下方并没有显示出来
-    newView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height)];
-    newView.backgroundColor = [UIColor blackColor];
-    newView.alpha = 0.8;
-    [self.view addSubview:newView];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hidethecalendarview)];
-    tap.numberOfTapsRequired = 1;
-    [newView addGestureRecognizer:tap];
-    CalendarView *calendarView = [[CalendarView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 250, self.view.frame.size.width, 250)];
-    calendarView.calendarDate = [NSDate date];
-    calendarView.alpha = 1;
     
-    [newView addSubview:calendarView];
+    calendarView = [[CalendarView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 250)];
+    calendarView.calendarDate = [NSDate date];
+    calendarView.delegate = self;
+    [calendarView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:calendarView];
+    
     isPointClick = NO;
 }
 
@@ -159,14 +154,14 @@
 //日历
 - (IBAction)calendarBtnClick:(UIButton *)sender {
     [UIView animateWithDuration:0.1 animations:^{
-        newView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        calendarView.frame = CGRectMake(0, self.view.frame.size.height - 250, self.view.frame.size.width, 250);
     }];
     
 }
 //取消日历的显示
 -(void)hidethecalendarview{
     [UIView animateWithDuration:0.1 animations:^{
-        newView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        calendarView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 250);
     }];
 }
 //添加备注
@@ -223,6 +218,7 @@
         }
     }
 }
+//输入框抖动
 -(void)shakeView:(UIView*)viewToShake
 {
     CGFloat t =2.0;
@@ -241,5 +237,18 @@
             } completion:NULL];
         }
     }];
+}
+//点击选择时间
+-(void)tappedOnDate:(NSDate *)selectedDate{
+    
+    NSTimeInterval secondsBetweenDates= [selectedDate timeIntervalSinceDate:[NSDate date]];
+    
+    if (secondsBetweenDates > 0) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请选择当前或之前的日期作为消费日期" delegate:self cancelButtonTitle:@"重新选择" otherButtonTitles:nil, nil];
+        [alertView show];
+    }else{
+        NSLog(@"选择的日期为--------->%@",selectedDate);
+        [self hidethecalendarview];
+    }
 }
 @end

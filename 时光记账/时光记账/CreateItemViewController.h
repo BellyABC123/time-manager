@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CalendarView.h"
 #import "MasonryViewLayout.h"
-@interface CreateItemViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,MasonryViewLayoutDelegate>
+@interface CreateItemViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,MasonryViewLayoutDelegate,CalendarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *keboardView;
 @property (weak, nonatomic) IBOutlet UIView *topView;

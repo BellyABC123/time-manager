@@ -21,14 +21,12 @@
 
 - (void)drawRect:(CGRect)rect
 {
-
     UISwipeGestureRecognizer * swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
         swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
     [self addGestureRecognizer:swipeleft];
     UISwipeGestureRecognizer * swipeRight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight:)];
     swipeRight.direction=UISwipeGestureRecognizerDirectionRight;
     [self addGestureRecognizer:swipeRight];
-    
     
     [self setCalendarParameters];
     _weekNames = @[@"一",@"二",@"三",@"四",@"五",@"六",@"日"];
@@ -56,7 +54,7 @@
     UILabel *titleText = [[UILabel alloc]initWithFrame:CGRectMake(0,0, self.bounds.size.width, hight)];
     titleText.textAlignment = NSTextAlignmentCenter;
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMMM yyyy"];
+    [format setDateFormat:@"yyyy-MMMM"];
     NSString *dateString = [[format stringFromDate:self.calendarDate] uppercaseString];
     [titleText setText:dateString];
     [titleText setFont:[UIFont fontWithName:@"Helvetica-Bold" size:15.0f]];
@@ -81,7 +79,7 @@
         button.tag = i+1;
         button.titleLabel.text = [NSString stringWithFormat:@"%d",i+1];
         [button setTitle:[NSString stringWithFormat:@"%d",i+1] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor brownColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0f]];
         [button addTarget:self action:@selector(tappedDate:) forControlEvents:UIControlEventTouchUpInside];
         NSInteger offsetX = (width*((i+weekday)%columns));
@@ -91,8 +89,8 @@
         if(i+1 ==_selectedDate && components.month == _selectedMonth && components.year == _selectedYear)
         {
             [button setBackgroundColor:[UIColor brownColor]];
-            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(tappedDate:) forControlEvents:UIControlEventTouchUpInside];
         }
         [self addSubview:button];
     }
@@ -112,7 +110,7 @@
         NSInteger offsetX = (width*(i%columns));
         NSInteger offsetY = (hight *(i/columns));
         [button setFrame:CGRectMake(originX+offsetX, hight+hight+offsetY, width, hight)];
-        [button setTitleColor:[UIColor colorWithRed:229.0/255.0 green:231.0/255.0 blue:233.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0f]];
         [button setEnabled:NO];
         [self addSubview:button];
@@ -124,7 +122,7 @@
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.titleLabel.text = [NSString stringWithFormat:@"%d",(i+1)-remainingDays];
             [button setTitle:[NSString stringWithFormat:@"%d",(i+1)-remainingDays] forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0] forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             NSInteger offsetX = (width*((i) %columns));
             NSInteger offsetY = (hight *((monthLength+weekday)/columns));
             [button setFrame:CGRectMake(originX+offsetX, hight+hight+offsetY, width, hight)];
@@ -138,26 +136,23 @@
 {
     gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [gregorian components:(NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.calendarDate];
-    if(!(_selectedDate == sender.tag && _selectedMonth == [components month] && _selectedYear == [components year]))
+    if(_selectedDate != -1)
     {
-        if(_selectedDate != -1)
-        {
-            UIButton *previousSelected =(UIButton *) [self viewWithTag:_selectedDate];
-            [previousSelected setBackgroundColor:[UIColor clearColor]];
-            [previousSelected setTitleColor:[UIColor brownColor] forState:UIControlStateNormal];
+        UIButton *previousSelected =(UIButton *) [self viewWithTag:_selectedDate];
+        [previousSelected setBackgroundColor:[UIColor clearColor]];
+        [previousSelected setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             
-        }
-        
-        [sender setBackgroundColor:[UIColor brownColor]];
-        [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _selectedDate = sender.tag;
-        NSDateComponents *components = [gregorian components:(NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.calendarDate];
-        components.day = _selectedDate;
-        _selectedMonth = components.month;
-        _selectedYear = components.year;
-        NSDate *clickedDate = [gregorian dateFromComponents:components];
-        [self.delegate tappedOnDate:clickedDate];
     }
+        
+    [sender setBackgroundColor:[UIColor brownColor]];
+    [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _selectedDate = sender.tag;
+    components = [gregorian components:(NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.calendarDate];
+    components.day = _selectedDate;
+    _selectedMonth = components.month;
+    _selectedYear = components.year;
+    NSDate *clickedDate = [gregorian dateFromComponents:components];
+    [self.delegate tappedOnDate:clickedDate];
 }
 
 -(void)swipeleft:(UISwipeGestureRecognizer*)gestureRecognizer
