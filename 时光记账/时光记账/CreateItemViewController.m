@@ -11,6 +11,11 @@
 @interface CreateItemViewController (){
     BOOL _isTaped;
     UIView *newView;
+    BOOL isPointClick;
+    
+
+    float price;
+    float totalPrice;
 }
 
 @end
@@ -38,7 +43,7 @@
     calendarView.alpha = 1;
     
     [newView addSubview:calendarView];
-    
+    isPointClick = NO;
 }
 
 //手势识别调用方法
@@ -82,37 +87,66 @@
 }
 //数字键盘
 - (IBAction)keboardBtnClick:(UIButton *)sender {
-    NSLog(@"%ld",(long)sender.tag);
-    NSLog(@"%@",_priceLabel.text);
-    NSString *str;
+
+    float priceFloatNum = [[_priceLabel.text substringFromIndex:1] floatValue];
+    
     switch (sender.tag) {
         //逐个删除 →
         case 13:
+
             break;
         //归零 C
         case 11:
-            [_priceLabel setText:@"¥0.00"];
+            isPointClick = NO;
+            [_priceLabel setText:@"¥0.0"];
             break;
         //加  +
         case 14:
+            [_okBtnTitle setTitle:@"=" forState:UIControlStateNormal];
+            price = priceFloatNum;
+            [_priceLabel setText:@"¥0.0"];
             
+            isPointClick = NO;
             break;
-        //OK
+        //OK // =
         case 15:
-            
+            isPointClick = NO;
+            if ([sender.titleLabel.text isEqualToString:@"="]) {
+                totalPrice = price+priceFloatNum;
+                [_priceLabel setText:[NSString stringWithFormat:@"¥%.1f",totalPrice]];
+                [sender setTitle:@"OK" forState:UIControlStateNormal];
+            }else{
+                _isTaped = YES;
+                [self hidenTopViewAndKeyboardView];
+                
+                NSLog(@"就是这么多钱 -------> %0.1f",priceFloatNum);
+            }
             break;
         //小数点 。
         case 12:
-            
-            break;
-        //零
-        case 0:
+            isPointClick = YES;
             
             break;
         default:
-            str = _priceLabel.text;
-            str = [str substringFromIndex:1];
-            [_priceLabel setText:[NSString stringWithFormat:@"¥%.2f",(float)sender.tag]];
+            if (isPointClick) {
+                if ((priceFloatNum - (int)priceFloatNum) > 0 ) {
+                    [self shakeView:(UILabel*)_priceLabel];
+                }else{
+                    if (priceFloatNum <= 999999.0) {
+                        priceFloatNum = priceFloatNum + sender.tag *0.1;
+                    }else{
+                        [self shakeView:(UILabel*)_priceLabel];
+                    }
+                }
+
+            }else{
+                if ((priceFloatNum*10 + sender.tag) <= 999999.0) {
+                     priceFloatNum = priceFloatNum*10 + sender.tag;
+                }else{
+                    [self shakeView:(UILabel*)_priceLabel];
+                }
+            }
+            [_priceLabel setText:[NSString stringWithFormat:@"¥%.1f",priceFloatNum]];
             break;
     }
 }
@@ -182,5 +216,24 @@
             [self hidenTopViewAndKeyboardView];
         }
     }
+}
+-(void)shakeView:(UIView*)viewToShake
+{
+    CGFloat t =2.0;
+    CGAffineTransform translateRight  =CGAffineTransformTranslate(CGAffineTransformIdentity, t,0.0);
+    CGAffineTransform translateLeft =CGAffineTransformTranslate(CGAffineTransformIdentity,-t,0.0);
+    
+    viewToShake.transform = translateLeft;
+    
+    [UIView animateWithDuration:0.07 delay:0.0 options:UIViewAnimationOptionAutoreverse|UIViewAnimationOptionRepeat animations:^{
+        [UIView setAnimationRepeatCount:2.0];
+        viewToShake.transform = translateRight;
+    } completion:^(BOOL finished){
+        if(finished){
+            [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+                viewToShake.transform =CGAffineTransformIdentity;
+            } completion:NULL];
+        }
+    }];
 }
 @end

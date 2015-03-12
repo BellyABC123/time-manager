@@ -300,10 +300,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COs-Dz-2oX">
                                         <rect key="frame" x="0.0" y="42" width="600" height="172"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyv-6u-EqS">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyv-6u-EqS">
                                                 <rect key="frame" x="0.0" y="1" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="1">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -312,10 +311,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="PZC-hr-CQh"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klc-re-S9O">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klc-re-S9O">
                                                 <rect key="frame" x="150" y="1" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="2">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -324,10 +322,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="uVK-Yf-aUr"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLA-H8-H3a">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLA-H8-H3a">
                                                 <rect key="frame" x="300" y="1" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="3">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -336,10 +333,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="QHw-Qs-J1w"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="13" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYN-wy-LrP">
+                                            <button opaque="NO" tag="13" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYN-wy-LrP">
                                                 <rect key="frame" x="450" y="1" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="←">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -348,10 +344,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="eof-dc-sQh"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxy-Xn-y1Q">
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxy-Xn-y1Q">
                                                 <rect key="frame" x="0.0" y="44" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="4">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -360,10 +355,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="9QF-jS-Fjw"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWU-AW-1OB">
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWU-AW-1OB">
                                                 <rect key="frame" x="150" y="44" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="5">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -372,22 +366,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="8hc-3F-Klj"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gS3-cF-qDu">
-                                                <rect key="frame" x="0.0" y="87" width="149" height="42"/>
-                                                <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="7">
-                                                    <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="KLO-7s-Dts"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILs-5f-oRp">
+                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILs-5f-oRp">
                                                 <rect key="frame" x="300" y="87" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="9">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -396,11 +377,10 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="EQt-yX-fvh"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="15" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqm-bO-mOn">
+                                            <button opaque="NO" tag="15" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jqm-bO-mOn">
                                                 <rect key="frame" x="450" y="87" width="149" height="85"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="＝">
+                                                <state key="normal" title="OK">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -408,10 +388,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="Dba-qC-aVX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2j-Yr-nT6">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2j-Yr-nT6">
                                                 <rect key="frame" x="150" y="130" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="0">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -420,10 +399,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="BxR-yE-IcF"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDW-OJ-eoj">
+                                            <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDW-OJ-eoj">
                                                 <rect key="frame" x="300" y="130" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title=".">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -432,10 +410,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="3lR-WU-mBK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8N-Bm-eFf">
+                                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8N-Bm-eFf">
                                                 <rect key="frame" x="0.0" y="130" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="C">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -444,10 +421,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="CPP-MV-VQi"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rh-U4-cHZ">
+                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rh-U4-cHZ">
                                                 <rect key="frame" x="150" y="87" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="8">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -456,10 +432,9 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="Zl3-BT-1AK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHK-9O-wdq">
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHK-9O-wdq">
                                                 <rect key="frame" x="300" y="44" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="6">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -468,16 +443,26 @@
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="TOn-Dl-ilH"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" tag="14" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XF0-CT-dge">
+                                            <button opaque="NO" tag="14" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XF0-CT-dge">
                                                 <rect key="frame" x="450" y="44" width="149" height="42"/>
                                                 <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="NTY-Gt-yAa"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gS3-cF-qDu">
+                                                <rect key="frame" x="0.0" y="87" width="149" height="42"/>
+                                                <color key="backgroundColor" red="0.90285326089999995" green="0.90285326089999995" blue="0.90285326089999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="7">
+                                                    <color key="titleColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" red="0.39482983710000003" green="0.34416818100000002" blue="0.45549665179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="keboardBtnClick:" destination="2DT-XW-mFr" eventType="touchUpInside" id="KLO-7s-Dts"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -579,7 +564,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="my1-Zd-Kib"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVD-Hk-vXE">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVD-Hk-vXE">
                                                 <rect key="frame" x="430" y="7" width="162" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="Ai5-rb-lOm"/>
@@ -746,6 +731,7 @@
                     </view>
                     <connections>
                         <outlet property="keboardView" destination="g1X-CH-oR5" id="hij-uk-h6j"/>
+                        <outlet property="okBtnTitle" destination="Jqm-bO-mOn" id="iuy-In-aPP"/>
                         <outlet property="priceLabel" destination="JVD-Hk-vXE" id="MAh-K8-LYV"/>
                         <outlet property="topView" destination="U2A-ZS-xeo" id="tlY-DC-lQb"/>
                         <outlet property="topViewOfKeyboardView" destination="112-DH-zW6" id="1D4-kk-IvU"/>
