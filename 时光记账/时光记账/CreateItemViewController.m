@@ -55,7 +55,7 @@
     CGRect topViewFrame = _topView.frame;
     CGRect keyboardViewFrame = _keboardView.frame;
     topViewFrame.origin.y -= 58;
-    keyboardViewFrame.origin.y += 125;
+    keyboardViewFrame.origin.y += 172;
     [UIView animateWithDuration:0.2 animations:^{
         _topView.frame = topViewFrame;
         _keboardView.frame = keyboardViewFrame;
@@ -66,7 +66,7 @@
     CGRect topViewFrame = _topView.frame;
     CGRect keyboardViewFrame = _keboardView.frame;
     topViewFrame.origin.y += 58;
-    keyboardViewFrame.origin.y -= 125;
+    keyboardViewFrame.origin.y -= 172;
     [UIView animateWithDuration:0.2 animations:^{
         _topView.frame = topViewFrame;
         _keboardView.frame = keyboardViewFrame;
