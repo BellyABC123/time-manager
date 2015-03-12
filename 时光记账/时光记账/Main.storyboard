@@ -730,6 +730,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="IFE-49-ZoQ" id="ieD-V8-GSg"/>
                         <outlet property="keboardView" destination="g1X-CH-oR5" id="hij-uk-h6j"/>
                         <outlet property="okBtnTitle" destination="Jqm-bO-mOn" id="iuy-In-aPP"/>
                         <outlet property="priceLabel" destination="JVD-Hk-vXE" id="MAh-K8-LYV"/>
