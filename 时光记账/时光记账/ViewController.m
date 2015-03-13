@@ -101,7 +101,7 @@
             }];
         }];
     }else{
-        //回复位置
+        //恢复位置
         CGRect rectDeleteButton = deleteButton.frame;
         CGRect rectEditButton = editButton.frame;
         rectDeleteButton.origin.x = rectDeleteButton.origin.x + (self.view.frame.size.width)/3;

@@ -264,7 +264,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TV-P5-EAJ">
-                                                    <rect key="frame" x="20" y="15" width="10" height="21"/>
+                                                    <rect key="frame" x="20" y="14" width="10" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -274,8 +274,8 @@
                                         </view>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="centerX" secondItem="3TV-P5-EAJ" secondAttribute="centerX" id="Ukb-K5-mGy"/>
-                                            <constraint firstAttribute="centerY" secondItem="3TV-P5-EAJ" secondAttribute="centerY" id="yPI-2O-Y8S"/>
+                                            <constraint firstAttribute="centerY" secondItem="3TV-P5-EAJ" secondAttribute="centerY" id="6SJ-J3-zb2"/>
+                                            <constraint firstAttribute="centerX" secondItem="3TV-P5-EAJ" secondAttribute="centerX" id="S0p-8m-BfG"/>
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>

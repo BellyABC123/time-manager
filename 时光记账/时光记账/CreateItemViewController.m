@@ -13,7 +13,7 @@
     BOOL _isTaped;
     CalendarView *calendarView;
     BOOL isPointClick;
-    
+    NSMutableArray *typeArray;
     
     float price;
     float totalPrice;
@@ -28,6 +28,10 @@
     // Do any additional setup after loading the view.
     _isTaped = NO;
     isPointClick = NO;
+    //读取plist文件内容
+    NSString *pathForPlist = [[NSBundle mainBundle]pathForResource:@"consumptiontype" ofType:@"plist"];
+    typeArray = [[NSMutableArray alloc]initWithContentsOfFile:pathForPlist];
+    NSLog(@"%@",typeArray);
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapGesture)];
     tapGesture.numberOfTapsRequired = 1;
@@ -211,7 +215,7 @@
 }
 #pragma mark UIcolloctionView && MasonryViewLayout
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 30;
+    return typeArray.count;
 }
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -219,7 +223,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectioncell" forIndexPath:indexPath];
     UILabel *label = (UILabel*)[cell viewWithTag:5];
-    label.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    label.text = typeArray[indexPath.row];
     return cell;
 }
 
@@ -234,6 +238,21 @@
         _isTaped = !_isTaped;
         [self showTopViewAndKeyboardView];
     }
+    UIView *snapshot = [self customSnapshoFromView:[_collectionView cellForItemAtIndexPath:indexPath]];
+    __block CGPoint center = [_collectionView cellForItemAtIndexPath:indexPath].center;
+    center.y += 58;
+    snapshot.center = center;
+    [self.view addSubview:snapshot];
+    center.x = 5;
+    center.y = self.view.bounds.size.height - 172;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        snapshot.center = center;
+    }completion:^(BOOL finished) {
+        [snapshot removeFromSuperview];
+    }];
+    
+    
     NSLog(@"%ld",(long)indexPath.row);
 }
 
