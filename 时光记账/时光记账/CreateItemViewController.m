@@ -39,118 +39,11 @@
     [calendarView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:calendarView];
     
-    //collectionView add long gesture
+    //给 collectionView添加长按手势
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressGestureRecognized:)];
     [self.collectionView addGestureRecognizer:longPress];
 }
-- (IBAction)longPressGestureRecognized:(id)sender {
-    
-    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
-    UIGestureRecognizerState state = longPress.state;
-    
-    CGPoint location = [longPress locationInView:self.collectionView];
-    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
-    static UIView       *snapshot = nil;        ///< A snapshot of the row user is moving.
-    static NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begins.
-    
-    switch (state) {
-        case UIGestureRecognizerStateBegan: {
-            if (indexPath) {
-                sourceIndexPath = indexPath;
-                
-                UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-                
-                // Take a snapshot of the selected row using helper method.
-                snapshot = [self customSnapshoFromView:cell];
-                
-                // Add the snapshot as subview, centered at cell's center...
-                __block CGPoint center = cell.center;
-                snapshot.center = center;
-                snapshot.alpha = 0.0;
-                [self.collectionView addSubview:snapshot];
-                [UIView animateWithDuration:0.25 animations:^{
-                    
-                    // Offset for gesture location.
-                    center.y = location.y;
-                    snapshot.center = center;
-                    snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
-                    snapshot.alpha = 0.98;
-                    cell.alpha = 0.0;
-                    
-                } completion:^(BOOL finished) {
-                    
-                    cell.hidden = YES;
-                    
-                }];
-            }
-            break;
-        }
-            
-        case UIGestureRecognizerStateChanged: {
-            CGPoint center = snapshot.center;
-            center.y = location.y;
-            snapshot.center = center;
-            
-            // Is destination valid and is it different from source?
-            if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
-                
-                // ... update data source.
-//                [self.objects exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
-                
-                // ... move the rows.
-                [self.collectionView moveItemAtIndexPath:sourceIndexPath toIndexPath:indexPath];
-                
-                // ... and update source so it is in sync with UI changes.
-                sourceIndexPath = indexPath;
-            }
-            break;
-        }
-            
-        default: {
-            // Clean up.
-            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:sourceIndexPath];
-            cell.hidden = NO;
-            cell.alpha = 0.0;
-            
-            [UIView animateWithDuration:0.25 animations:^{
-                
-                snapshot.center = cell.center;
-                snapshot.transform = CGAffineTransformIdentity;
-                snapshot.alpha = 0.0;
-                cell.alpha = 1.0;
-                
-            } completion:^(BOOL finished) {
-                
-                sourceIndexPath = nil;
-                [snapshot removeFromSuperview];
-                snapshot = nil;
-                
-            }];
-            
-            break;
-        }
-    }
 
-}
-/** @brief Returns a customized snapshot of a given view. */
-- (UIView *)customSnapshoFromView:(UIView *)inputView {
-    
-    // Make an image from the input view.
-    UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, NO, 0);
-    [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    // Create an image view.
-    UIView *snapshot = [[UIImageView alloc] initWithImage:image];
-    snapshot.layer.masksToBounds = NO;
-    snapshot.layer.cornerRadius = 0.0;
-    snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
-    snapshot.layer.shadowRadius = 5.0;
-    snapshot.layer.shadowOpacity = 0.4;
-    
-    return snapshot;
-}
 //手势识别调用方法
 -(void)handleTapGesture{
     _isTaped = !_isTaped;
@@ -280,6 +173,40 @@
 //相机
 - (IBAction)cameraBtnClick:(UIButton *)sender {
 }
+
+//输入框抖动
+-(void)shakeView:(UIView*)viewToShake
+{
+    CGFloat t =2.0;
+    CGAffineTransform translateRight  =CGAffineTransformTranslate(CGAffineTransformIdentity, t,0.0);
+    CGAffineTransform translateLeft =CGAffineTransformTranslate(CGAffineTransformIdentity,-t,0.0);
+    
+    viewToShake.transform = translateLeft;
+    
+    [UIView animateWithDuration:0.07 delay:0.0 options:UIViewAnimationOptionAutoreverse|UIViewAnimationOptionRepeat animations:^{
+        [UIView setAnimationRepeatCount:2.0];
+        viewToShake.transform = translateRight;
+    } completion:^(BOOL finished){
+        if(finished){
+            [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+                viewToShake.transform =CGAffineTransformIdentity;
+            } completion:NULL];
+        }
+    }];
+}
+#pragma mark 日历选择时间的回掉
+-(void)tappedOnDate:(NSDate *)selectedDate{
+    
+    NSTimeInterval secondsBetweenDates= [selectedDate timeIntervalSinceDate:[NSDate date]];
+    //如果选择的日期大于今天
+    if (secondsBetweenDates > 0) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请选择当前或之前的日期作为消费日期" delegate:self cancelButtonTitle:@"重新选择" otherButtonTitles:nil, nil];
+        [alertView show];
+    }else{
+        NSLog(@"选择的日期为--------->%@",selectedDate);
+        [self hidethecalendarview];
+    }
+}
 #pragma mark UIcolloctionView && MasonryViewLayout
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return 40;
@@ -328,37 +255,100 @@
         }
     }
 }
-//输入框抖动
--(void)shakeView:(UIView*)viewToShake
-{
-    CGFloat t =2.0;
-    CGAffineTransform translateRight  =CGAffineTransformTranslate(CGAffineTransformIdentity, t,0.0);
-    CGAffineTransform translateLeft =CGAffineTransformTranslate(CGAffineTransformIdentity,-t,0.0);
+#pragma mark collectionview长按的回调
+//collectionView长按回调
+- (IBAction)longPressGestureRecognized:(id)sender {
+    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
+    UIGestureRecognizerState state = longPress.state;
     
-    viewToShake.transform = translateLeft;
+    CGPoint location = [longPress locationInView:self.collectionView];
+    //通过点找到cell所在的indexPath
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
     
-    [UIView animateWithDuration:0.07 delay:0.0 options:UIViewAnimationOptionAutoreverse|UIViewAnimationOptionRepeat animations:^{
-        [UIView setAnimationRepeatCount:2.0];
-        viewToShake.transform = translateRight;
-    } completion:^(BOOL finished){
-        if(finished){
-            [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-                viewToShake.transform =CGAffineTransformIdentity;
-            } completion:NULL];
+    static UIView       *snapshot = nil;        ///被选择cell的快照
+    static NSIndexPath  *sourceIndexPath = nil; ///被选择cell的位置，会不断的变化
+    switch (state) {
+        case UIGestureRecognizerStateBegan: {
+            if (indexPath) {
+                sourceIndexPath = indexPath;
+                
+                UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+                //得到被选择cell的快照
+                snapshot = [self customSnapshoFromView:cell];
+                //把这个快照作为子视图加入到collection当中
+                __block CGPoint center = cell.center;
+                snapshot.center = center;
+                snapshot.alpha = 0.0;
+                [self.collectionView addSubview:snapshot];
+                [UIView animateWithDuration:0.25 animations:^{
+                    //把快照移动到长按的位置并放大1.05倍，透明度设成0.98，把被点击cell消失掉
+                    center.y = location.y;
+                    center.x = location.x;
+                    snapshot.center = center;
+                    snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
+                    snapshot.alpha = 0.98;
+                    cell.alpha = 0.0;
+                } completion:^(BOOL finished) {
+                    cell.hidden = YES;
+                }];
+            }
+            break;
         }
-    }];
-}
-//点击选择时间
--(void)tappedOnDate:(NSDate *)selectedDate{
-    
-    NSTimeInterval secondsBetweenDates= [selectedDate timeIntervalSinceDate:[NSDate date]];
-    
-    if (secondsBetweenDates > 0) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请选择当前或之前的日期作为消费日期" delegate:self cancelButtonTitle:@"重新选择" otherButtonTitles:nil, nil];
-        [alertView show];
-    }else{
-        NSLog(@"选择的日期为--------->%@",selectedDate);
-        [self hidethecalendarview];
+            //长按状态发生改变
+        case UIGestureRecognizerStateChanged: {
+            CGPoint center = snapshot.center;
+            center.y = location.y;
+            center.x = location.x;
+            snapshot.center = center;
+            
+            // 拖动到的位置是同一个collectonview吗？是有效的cell位置吗？
+            if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
+                // ... 升级下位置改变之后的源数据顺序
+                //                [self.objects exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
+                // ... 把cell从初始位置移动到当前停留位置
+                [self.collectionView moveItemAtIndexPath:sourceIndexPath toIndexPath:indexPath];
+                // ... 不断变化初始位置
+                sourceIndexPath = indexPath;
+            }
+            break;
+        }
+        default: {
+            // 长按结束.
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:sourceIndexPath];
+            cell.hidden = NO;
+            cell.alpha = 0.0;
+            
+            [UIView animateWithDuration:0.25 animations:^{
+                snapshot.center = cell.center;
+                snapshot.transform = CGAffineTransformIdentity;
+                snapshot.alpha = 0.0;
+                cell.alpha = 1.0;
+            } completion:^(BOOL finished) {
+                sourceIndexPath = nil;
+                [snapshot removeFromSuperview];
+                snapshot = nil;
+            }];
+            break;
+        }
     }
+}
+//根据传入的view得到快照
+- (UIView *)customSnapshoFromView:(UIView *)inputView {
+    
+    // 通过传入view得到图片
+    UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, NO, 0);
+    [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // 把这个图片加入到view当中
+    UIView *snapshot = [[UIImageView alloc] initWithImage:image];
+    snapshot.layer.masksToBounds = NO;
+    snapshot.layer.cornerRadius = 0.0;
+    snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
+    snapshot.layer.shadowRadius = 5.0;
+    snapshot.layer.shadowOpacity = 0.4;
+    
+    return snapshot;
 }
 @end
