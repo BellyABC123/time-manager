@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>一般</string>
+	<string>收入</string>
+	<string>用餐</string>
+	<string>交通</string>
+	<string>购物</string>
+	<string>零食</string>
+	<string>网购</string>
+	<string>住房</string>
+	<string>娱乐</string>
+	<string>充值</string>
+	<string>酒水</string>
+	<string>约会</string>
+	<string>服装</string>
+	<string>医疗</string>
+	<string>学习</string>
+	<string>转账</string>
+	<string>丽人</string>
+	<string>旅游</string>
+	<string>运动</string>
+	<string>宠物</string>
+	<string>小宝</string>
+	<string>理财</string>
+	<string>工作</string>
+	<string>电影</string>
+	<string>鞋帽</string>
+	<string>数码</string>
+	<string>家庭</string>
+	<string>水电</string>
+	<string>腐败</string>
+	<string>丢失</string>
+</array>
+</plist>

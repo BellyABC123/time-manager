@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>61AB6E7F-D0D1-4D8F-937D-524105A051C7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>时光记账</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>41F751037E4B6D062F665A258CFC19043EBE7EDF</key>
+		<string>https://github.com/liqingfa/time.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>时光记账/时光记账.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>41F751037E4B6D062F665A258CFC19043EBE7EDF</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/liqingfa/time.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>41F751037E4B6D062F665A258CFC19043EBE7EDF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>41F751037E4B6D062F665A258CFC19043EBE7EDF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>time</string>
+		</dict>
+	</array>
+</dict>
+</plist>
