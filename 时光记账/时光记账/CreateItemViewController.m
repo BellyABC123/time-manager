@@ -7,13 +7,14 @@
 //
 
 #import "CreateItemViewController.h"
+#import "AudioToolbox/AudioToolbox.h"
 
 @interface CreateItemViewController (){
     BOOL _isTaped;
     CalendarView *calendarView;
     BOOL isPointClick;
     
-
+    
     float price;
     float totalPrice;
 }
@@ -24,14 +25,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     _isTaped = NO;
     isPointClick = NO;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapGesture)];
     tapGesture.numberOfTapsRequired = 1;
     [_topViewOfKeyboardView addGestureRecognizer:tapGesture];
-   
+    
     //初始化日历控件的承载视图时 在屏幕下方并没有显示出来
     calendarView = [[CalendarView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 250)];
     calendarView.calendarDate = [NSDate date];
@@ -41,7 +42,8 @@
     
     //给 collectionView添加长按手势
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressGestureRecognized:)];
-    [self.collectionView addGestureRecognizer:longPress];
+    [_collectionView addGestureRecognizer:longPress];
+    
 }
 
 //手势识别调用方法
@@ -85,11 +87,11 @@
 }
 //数字键盘
 - (IBAction)keboardBtnClick:(UIButton *)sender {
-
+    
     float priceFloatNum = [[_priceLabel.text substringFromIndex:1] floatValue];
     
     switch (sender.tag) {
-        //逐个删除 →
+            //逐个删除 →
         case 13:
             if ((priceFloatNum - (int)priceFloatNum) > 0 ) {
                 priceFloatNum = (int)priceFloatNum;
@@ -97,14 +99,14 @@
             }else{
                 priceFloatNum = (int)priceFloatNum/10;
             }
-             [_priceLabel setText:[NSString stringWithFormat:@"¥%.1f",priceFloatNum]];
+            [_priceLabel setText:[NSString stringWithFormat:@"¥%.1f",priceFloatNum]];
             break;
-        //归零 C
+            //归零 C
         case 11:
             isPointClick = NO;
             [_priceLabel setText:@"¥0.0"];
             break;
-        //加  +
+            //加  +
         case 14:
             [_okBtnTitle setTitle:@"=" forState:UIControlStateNormal];
             price = priceFloatNum;
@@ -112,7 +114,7 @@
             
             isPointClick = NO;
             break;
-        //OK // =
+            //OK // =
         case 15:
             isPointClick = NO;
             if ([sender.titleLabel.text isEqualToString:@"="]) {
@@ -126,7 +128,7 @@
                 NSLog(@"就是这么多钱 -------> %0.1f",priceFloatNum);
             }
             break;
-        //小数点 。
+            //小数点 。
         case 12:
             isPointClick = YES;
             
@@ -142,10 +144,10 @@
                         [self shakeView:(UILabel*)_priceLabel];
                     }
                 }
-
+                
             }else{
                 if ((priceFloatNum*10 + sender.tag) <= 999999.0) {
-                     priceFloatNum = priceFloatNum*10 + sender.tag;
+                    priceFloatNum = priceFloatNum*10 + sender.tag;
                 }else{
                     [self shakeView:(UILabel*)_priceLabel];
                 }
@@ -209,7 +211,7 @@
 }
 #pragma mark UIcolloctionView && MasonryViewLayout
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 40;
+    return 30;
 }
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -258,12 +260,15 @@
 #pragma mark collectionview长按的回调
 //collectionView长按回调
 - (IBAction)longPressGestureRecognized:(id)sender {
+    _topView.alpha = 0.0;
+    _keboardView.alpha = 0.0;
+    
     UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
     UIGestureRecognizerState state = longPress.state;
     
-    CGPoint location = [longPress locationInView:self.collectionView];
+    CGPoint location = [longPress locationInView:_collectionView];
     //通过点找到cell所在的indexPath
-    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:location];
+    NSIndexPath *indexPath = [_collectionView indexPathForItemAtPoint:location];
     
     static UIView       *snapshot = nil;        ///被选择cell的快照
     static NSIndexPath  *sourceIndexPath = nil; ///被选择cell的位置，会不断的变化
@@ -272,14 +277,14 @@
             if (indexPath) {
                 sourceIndexPath = indexPath;
                 
-                UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+                UICollectionViewCell *cell = [_collectionView cellForItemAtIndexPath:indexPath];
                 //得到被选择cell的快照
                 snapshot = [self customSnapshoFromView:cell];
                 //把这个快照作为子视图加入到collection当中
                 __block CGPoint center = cell.center;
                 snapshot.center = center;
                 snapshot.alpha = 0.0;
-                [self.collectionView addSubview:snapshot];
+                [_collectionView addSubview:snapshot];
                 [UIView animateWithDuration:0.25 animations:^{
                     //把快照移动到长按的位置并放大1.05倍，透明度设成0.98，把被点击cell消失掉
                     center.y = location.y;
@@ -288,7 +293,6 @@
                     snapshot.transform = CGAffineTransformMakeScale(1.05, 1.05);
                     snapshot.alpha = 0.98;
                     cell.alpha = 0.0;
-                } completion:^(BOOL finished) {
                     cell.hidden = YES;
                 }];
             }
@@ -300,13 +304,13 @@
             center.y = location.y;
             center.x = location.x;
             snapshot.center = center;
-            
+            [_collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
             // 拖动到的位置是同一个collectonview吗？是有效的cell位置吗？
             if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
                 // ... 升级下位置改变之后的源数据顺序
                 //                [self.objects exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
                 // ... 把cell从初始位置移动到当前停留位置
-                [self.collectionView moveItemAtIndexPath:sourceIndexPath toIndexPath:indexPath];
+                [_collectionView moveItemAtIndexPath:sourceIndexPath toIndexPath:indexPath];
                 // ... 不断变化初始位置
                 sourceIndexPath = indexPath;
             }
@@ -314,7 +318,7 @@
         }
         default: {
             // 长按结束.
-            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:sourceIndexPath];
+            UICollectionViewCell *cell = [_collectionView cellForItemAtIndexPath:sourceIndexPath];
             cell.hidden = NO;
             cell.alpha = 0.0;
             
@@ -326,7 +330,29 @@
             } completion:^(BOOL finished) {
                 sourceIndexPath = nil;
                 [snapshot removeFromSuperview];
-                snapshot = nil;
+                //这里是为了解决长按弹出的bug。
+                if (_isTaped) {
+                    CGRect topViewFrame = _topView.frame;
+                    CGRect keyboardViewFrame = _keboardView.frame;
+                    topViewFrame.origin.y -= 58;
+                    keyboardViewFrame.origin.y += 172;
+                    [UIView animateWithDuration:0.01 animations:^{
+                        _topView.frame = topViewFrame;
+                        _keboardView.frame = keyboardViewFrame;
+                    }completion:^(BOOL finished) {
+                        if (finished) {
+                            [UIView animateWithDuration:0.5 animations:^{
+                                _topView.alpha = 1.0;
+                                _keboardView.alpha = 1.0;
+                            }];
+                        }
+                    }];
+                }else{
+                    [UIView animateWithDuration:0.5 animations:^{
+                        _topView.alpha = 1.0;
+                        _keboardView.alpha = 1.0;
+                    }];
+                }
             }];
             break;
         }
