@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *okBtnTitle;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 
 - (IBAction)backBtnClick:(UIButton *)sender;
 - (IBAction)keboardBtnClick:(UIButton *)sender;

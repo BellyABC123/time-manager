@@ -37,7 +37,7 @@
     tapGesture.numberOfTapsRequired = 1;
     [_topViewOfKeyboardView addGestureRecognizer:tapGesture];
     
-    //初始化日历控件的承载视图时 在屏幕下方并没有显示出来
+    //初始化日历控件视图时 在屏幕下方并没有显示出来
     calendarView = [[CalendarView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 250)];
     calendarView.calendarDate = [NSDate date];
     calendarView.delegate = self;
@@ -243,16 +243,20 @@
     center.y += 58;
     snapshot.center = center;
     [self.view addSubview:snapshot];
-    center.x = 5;
-    center.y = self.view.bounds.size.height - 172;
+    center.x = 25;
+    center.y = self.view.bounds.size.height - 193;
     
     [UIView animateWithDuration:0.5 animations:^{
         snapshot.center = center;
+        snapshot.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
     }completion:^(BOOL finished) {
-        [snapshot removeFromSuperview];
+        _itemTitleLabel.text = typeArray[indexPath.row];
+        [UIView animateWithDuration:0.2 animations:^{
+            snapshot.alpha = 0.0;
+        }completion:^(BOOL finished) {
+            [snapshot removeFromSuperview];
+        }];
     }];
-    
-    
     NSLog(@"%ld",(long)indexPath.row);
 }
 
@@ -326,11 +330,11 @@
             [_collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
             // 拖动到的位置是同一个collectonview吗？是有效的cell位置吗？
             if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
-                // ... 升级下位置改变之后的源数据顺序
+                //升级下位置改变之后的源数据顺序
                 //                [self.objects exchangeObjectAtIndex:indexPath.row withObjectAtIndex:sourceIndexPath.row];
-                // ... 把cell从初始位置移动到当前停留位置
+                //把cell从初始位置移动到当前停留位置
                 [_collectionView moveItemAtIndexPath:sourceIndexPath toIndexPath:indexPath];
-                // ... 不断变化初始位置
+                // 不断变化初始位置
                 sourceIndexPath = indexPath;
             }
             break;
@@ -386,7 +390,7 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    // 把这个图片加入到view当中
+    // 把这个图片加入到view当中并设置阴影
     UIView *snapshot = [[UIImageView alloc] initWithImage:image];
     snapshot.layer.masksToBounds = NO;
     snapshot.layer.cornerRadius = 0.0;
