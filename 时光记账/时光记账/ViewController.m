@@ -62,12 +62,6 @@
     }
     UITableViewCell *cell = (UITableViewCell*)tempView;
     NSIndexPath *path = [_mainTableVie indexPathForCell:cell];
-
-    if([[witchIsClicked valueForKey:[NSString stringWithFormat:@"%ld",(long)path.row]] isEqualToValue:@0]){
-        [witchIsClicked setValue:@1 forKey:[NSString stringWithFormat:@"%ld",(long)path.row]];
-    }else{
-        [witchIsClicked setValue:@0 forKey:[NSString stringWithFormat:@"%ld",(long)path.row]];
-    }
     //消费
     UILabel *expenditureLabel = (UILabel*)[cell viewWithTag:101];
     //收入
@@ -77,7 +71,9 @@
     //编辑
     UIButton *editButton = (UIButton*)[cell viewWithTag:105];
     
-    if ([[witchIsClicked valueForKey:[NSString stringWithFormat:@"%ld",(long)path.row]] isEqualToValue:@1]) {
+    if ([[witchIsClicked valueForKey:[NSString stringWithFormat:@"%ld",(long)path.row]] isEqualToValue:@0]) {
+        
+        [witchIsClicked setValue:@1 forKey:[NSString stringWithFormat:@"%ld",(long)path.row]];
         [_mainTableVie setScrollEnabled:NO];
         
         [UIView animateWithDuration:0.1 animations:^{
@@ -87,9 +83,6 @@
             //取消隐藏
             deleteButton.hidden = NO;
             editButton.hidden = NO;
-            //取消约束关系
-            [deleteButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-            [editButton setTranslatesAutoresizingMaskIntoConstraints:NO];
             //变化位置
             CGRect rectDeleteButton = deleteButton.frame;
             CGRect rectEditButton = editButton.frame;
@@ -101,6 +94,7 @@
             }];
         }];
     }else{
+         [witchIsClicked setValue:@0 forKey:[NSString stringWithFormat:@"%ld",(long)path.row]];
         //恢复位置
         CGRect rectDeleteButton = deleteButton.frame;
         CGRect rectEditButton = editButton.frame;
@@ -131,14 +125,61 @@
 
 - (IBAction)addNewCount:(UIButton *)sender {
     
-    [UIView animateWithDuration:0.5 animations:^{
-        CABasicAnimation* rotationAnimation;
-        rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-        rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 0.5 ];
-        [sender.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
-    } completion:^(BOOL finished) {
-        [self performSegueWithIdentifier:@"showcreateitemviewcontroller" sender:self];
-    }];
+    NSArray *arr = [witchIsClicked allKeys];
+    for (NSString *key in arr) {
+        if ([[witchIsClicked valueForKey:key] isEqualToValue:@1]) {
+            NSIndexPath *path = [NSIndexPath indexPathForRow:[key integerValue] inSection:0];
+
+            UITableViewCell *myCell = [_mainTableVie cellForRowAtIndexPath:path];
+            
+            [witchIsClicked setValue:@0 forKey:[NSString stringWithFormat:@"%ld",(long)path.row]];
+            //消费
+            UILabel *expenditureLabel = (UILabel*)[myCell viewWithTag:101];
+            //收入
+            UILabel *incomeLabel = (UILabel*)[myCell viewWithTag:100];
+            //删除
+            UIButton *deleteButton = (UIButton*)[myCell viewWithTag:104];
+            //编辑
+            UIButton *editButton = (UIButton*)[myCell viewWithTag:105];
+            //恢复位置
+            CGRect rectDeleteButton = deleteButton.frame;
+            CGRect rectEditButton = editButton.frame;
+            rectDeleteButton.origin.x = rectDeleteButton.origin.x + (self.view.frame.size.width)/3;
+            rectEditButton.origin.x = rectEditButton.origin.x - (self.view.frame.size.width)/3;
+            
+            [UIView animateWithDuration:0.4 animations:^{
+                deleteButton.frame = rectDeleteButton;
+                editButton.frame = rectEditButton;
+            }completion:^(BOOL finished) {
+                deleteButton.hidden = YES;
+                editButton.hidden = YES;
+                [UIView animateWithDuration:0.2 animations:^{
+                    expenditureLabel.alpha = 1.0;
+                    incomeLabel.alpha = 1.0;
+                }];
+            }];
+        }
+    }
     
+    
+    BOOL stillClicked = NO;
+    for (NSValue *value in witchIsClicked) {
+        if([[witchIsClicked valueForKey:[NSString stringWithFormat:@"%@",value]] isEqualToValue:@1]){
+            stillClicked =  YES;
+        }
+    }
+    if (!stillClicked) {
+        [_mainTableVie setScrollEnabled:YES];
+        [UIView animateWithDuration:0.5 animations:^{
+            CABasicAnimation* rotationAnimation;
+            rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+            rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 0.5 ];
+            [sender.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+        } completion:^(BOOL finished) {
+            [self performSegueWithIdentifier:@"showcreateitemviewcontroller" sender:self];
+        }];
+    }
+   
 }
+
 @end
