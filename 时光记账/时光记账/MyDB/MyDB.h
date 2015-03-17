@@ -10,6 +10,7 @@
 #import "FMDB.h"
 @interface MyDB : NSObject{
     FMDatabase *_db;
+    NSString *_tableName;
 }
 
 @end
