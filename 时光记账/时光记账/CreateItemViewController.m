@@ -10,13 +10,16 @@
 #import "AudioToolbox/AudioToolbox.h"
 
 @interface CreateItemViewController (){
-    BOOL _isTaped;
-    CalendarView *calendarView;
-    BOOL isPointClick;
-    NSMutableArray *typeArray;
     
+    CalendarView *calendarView;
+    UIPickerView *selectGetPictureMethod;
+    
+    NSMutableArray *typeArray;
+    NSMutableDictionary *collectInfoDictionary;
     float price;
     float totalPrice;
+    BOOL _isTaped;
+    BOOL isPointClick;
 }
 
 @end
@@ -26,12 +29,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    collectInfoDictionary = [NSMutableDictionary dictionary];
     _isTaped = NO;
     isPointClick = NO;
     //读取plist文件内容
     NSString *pathForPlist = [[NSBundle mainBundle]pathForResource:@"consumptiontype" ofType:@"plist"];
     typeArray = [[NSMutableArray alloc]initWithContentsOfFile:pathForPlist];
-    NSLog(@"%@",typeArray);
+    
+    
+    //默认是一般的消费类型
+    [collectInfoDictionary setValue:typeArray[0] forKey:@"kinds"];
+    
+    //默认日期为当前
+    NSDate *today = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate:today];
+    NSDate *selectedDate = [today  dateByAddingTimeInterval: interval];
+    NSString *select = [[NSString stringWithFormat:@"%@",selectedDate]substringToIndex:10];
+    [collectInfoDictionary setValue:select forKey:@"date"];
+    
+    //默认备注为空
+    [collectInfoDictionary setValue:@"" forKey:@"note"];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapGesture)];
     tapGesture.numberOfTapsRequired = 1;
@@ -126,9 +144,19 @@
                 [_priceLabel setText:[NSString stringWithFormat:@"¥%.1f",totalPrice]];
                 [sender setTitle:@"OK" forState:UIControlStateNormal];
             }else{
-                _isTaped = YES;
-                [self hidenTopViewAndKeyboardView];
-                
+                if (priceFloatNum == 0.0) {
+                    
+                }else{
+                    _isTaped = YES;
+                    [self hidenTopViewAndKeyboardView];
+                    [collectInfoDictionary setValue:@(priceFloatNum) forKey:@"price"];
+                    
+                    
+                    
+                    
+                    //跳转到首页
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
                 NSLog(@"就是这么多钱 -------> %0.1f",priceFloatNum);
             }
             break;
@@ -175,9 +203,37 @@
 }
 //添加备注
 - (IBAction)remarkBtnClick:(UIButton *)sender {
+    //ios8建议使用UIAlertController
+    UIAlertController *remarkController = [UIAlertController alertControllerWithTitle:@"添加备注信息" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [remarkController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"备注信息";
+    }];
+    //添加取消确定按钮并设置点击确定按钮的回调事件
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        UITextField * remarkField = remarkController.textFields.firstObject;
+        NSString *getRemarkText = [remarkField.text description];
+        if (getRemarkText.length != 0) {
+            [collectInfoDictionary setValue:getRemarkText forKey:@"note"];
+        }
+    }];
+    [remarkController addAction:cancelAction];
+    [remarkController addAction:okAction];
+    
+   [self presentViewController:remarkController animated:YES completion:nil];
 }
 //相机
 - (IBAction)cameraBtnClick:(UIButton *)sender {
+    UIAlertController *pickPictureController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:nil];
+    [pickPictureController addAction:cancelAction];
+    [pickPictureController addAction:deleteAction];
+    [pickPictureController addAction:archiveAction];
+
+    [self presentViewController:pickPictureController animated:YES completion:nil];
 }
 
 //输入框抖动
@@ -210,6 +266,13 @@
         [alertView show];
     }else{
         NSLog(@"选择的日期为--------->%@",selectedDate);
+        NSDate *today = [NSDate date];
+        NSTimeZone *zone = [NSTimeZone systemTimeZone];
+        NSInteger interval = [zone secondsFromGMTForDate:today];
+        selectedDate = [selectedDate  dateByAddingTimeInterval: interval];
+        
+        NSString *select = [[NSString stringWithFormat:@"%@",selectedDate]substringToIndex:10];
+        [collectInfoDictionary setValue:select forKey:@"date"];
         [self hidethecalendarview];
     }
 }
@@ -238,6 +301,7 @@
         _isTaped = !_isTaped;
         [self showTopViewAndKeyboardView];
     }
+    //得到点击cell的快照 实现动画效果
     UIView *snapshot = [self customSnapshoFromView:[_collectionView cellForItemAtIndexPath:indexPath]];
     __block CGPoint center = [_collectionView cellForItemAtIndexPath:indexPath].center;
     center.y += 58;
@@ -251,6 +315,10 @@
         snapshot.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
     }completion:^(BOOL finished) {
         _itemTitleLabel.text = typeArray[indexPath.row];
+        
+        //把消费者种类加入到搜集字典中
+        [collectInfoDictionary setValue:[typeArray objectAtIndex:indexPath.row] forKey:@"kinds"];
+        
         [UIView animateWithDuration:0.2 animations:^{
             snapshot.alpha = 0.0;
         }completion:^(BOOL finished) {

@@ -30,7 +30,7 @@ static MyDB * sharedDB;
 //创建表
 -(BOOL)createTable{
     if ([_db open]) {
-        NSString *sqlCreateTable =  @"CREATE TABLE IF NOT EXISTS myCheck (ID INTEGER PRIMARY KEY AUTOINCREMENT,DATE TEXT,KINDS TEXT,PRICE TEXT,NOTE TEXT,CONSUMPTIONIMG BLOB)";
+        NSString *sqlCreateTable =  @"CREATE TABLE IF NOT EXISTS myCheck (ID INTEGER PRIMARY KEY AUTOINCREMENT,DATE TEXT,KINDS TEXT,PRICE TEXT,NOTE TEXT,CONSUMPTIONIMG BLOB,PICTURE BLOB)";
         BOOL result = [_db executeUpdate:sqlCreateTable];
         
         if (!result) {
@@ -45,13 +45,14 @@ static MyDB * sharedDB;
 //把消费项目添加到数据库当中
 -(BOOL)insertInfoToTableWithParameters:(NSDictionary *)parameters{
     if ([_db open]) {
-        NSString *sqlInsertInfoToTable = @"INSERT INTO myCheck (DATE, KINDS, PRICE, NOTE, CONSUMPTIONIMG) VALUES (?, ?, ?, ?, ?)";
+        NSString *sqlInsertInfoToTable = @"INSERT INTO myCheck (DATE, KINDS, PRICE, NOTE, CONSUMPTIONIMG,PICTURE) VALUES (?, ?, ?, ?, ?)";
         BOOL result = [_db executeUpdate:sqlInsertInfoToTable,
                        [parameters objectForKey:@"date"],
                        [parameters objectForKey:@"kinds"],
                        [parameters objectForKey:@"price"],
                        [parameters objectForKey:@"note"],
-                       [parameters objectForKey:@"consumptionimg"]
+                       [parameters objectForKey:@"consumptionimg"],
+                       [parameters objectForKey:@"picture"]
                        ];
         if (!result) {
             NSLog(@"error when insert db table");
@@ -63,10 +64,10 @@ static MyDB * sharedDB;
     return YES;
 }
 //根据ID查询数据
-- (NSDictionary *)querywithID:(NSInteger )ID{
+- (NSDictionary *)querywithID:(int)ID{
     NSMutableDictionary *infoOfID = [NSMutableDictionary dictionary];
     if ([_db open]) {
-        NSString * sqlWithID = [NSString stringWithFormat:@"SELECT * FROM myCheck WHERE ID = %ld",ID];
+        NSString * sqlWithID = [NSString stringWithFormat:@"SELECT * FROM myCheck WHERE ID = %d",ID];
         FMResultSet * result = [_db executeQuery:sqlWithID];
         [infoOfID setObject:[result stringForColumn:@"ID"] forKey:@"id"];
         [infoOfID setObject:[result dataForColumn:@"DATE"] forKey:@"date"];
@@ -74,6 +75,7 @@ static MyDB * sharedDB;
         [infoOfID setObject:[result stringForColumn:@"PRICE"] forKey:@"price"];
         [infoOfID setObject:[result stringForColumn:@"NOTE"] forKey:@"note"];
         [infoOfID setObject:[result stringForColumn:@"CONSUMPTIONIMG"] forKey:@"consumptionimg"];
+        [infoOfID setObject:[result stringForColumn:@"PICTURE"] forKey:@"picture"];
         [_db close];
     }
     return infoOfID;
@@ -85,19 +87,35 @@ static MyDB * sharedDB;
         NSString * sqlQueryAll = [NSString stringWithFormat:@"SELECT * FROM myCheck"];
         FMResultSet * result = [_db executeQuery:sqlQueryAll];
         while ([result next]) {
-            NSMutableDictionary *peopleDic = [NSMutableDictionary dictionary];
+            NSMutableDictionary *someoneDic = [NSMutableDictionary dictionary];
             
-            [peopleDic setObject:[result stringForColumn:@"ID"] forKey:@"id"];
-            [peopleDic setObject:[result dataForColumn:@"DATE"] forKey:@"date"];
-            [peopleDic setObject:[result stringForColumn:@"KINDS"] forKey:@"kinds"];
-            [peopleDic setObject:[result stringForColumn:@"PRICE"] forKey:@"price"];
-            [peopleDic setObject:[result stringForColumn:@"NOTE"] forKey:@"note"];
-            [peopleDic setObject:[result stringForColumn:@"CONSUMPTIONIMG"] forKey:@"consumptionimg"];
-            
-            [checkAll addObject:peopleDic];
+            [someoneDic setObject:[result stringForColumn:@"ID"] forKey:@"id"];
+            [someoneDic setObject:[result dataForColumn:@"DATE"] forKey:@"date"];
+            [someoneDic setObject:[result stringForColumn:@"KINDS"] forKey:@"kinds"];
+            [someoneDic setObject:[result stringForColumn:@"PRICE"] forKey:@"price"];
+            [someoneDic setObject:[result stringForColumn:@"NOTE"] forKey:@"note"];
+            [someoneDic setObject:[result stringForColumn:@"CONSUMPTIONIMG"] forKey:@"consumptionimg"];
+            [someoneDic setObject:[result stringForColumn:@"PICTURE"] forKey:@"picture"];
+            [checkAll addObject:someoneDic];
         }
         [_db close];
     }
     return checkAll;
+}
+//根据ID删除数据
+- (BOOL)deleteTableDatawithID:(int)ID{
+    if ([_db open]) {
+        
+        NSString *deleteSql = [NSString stringWithFormat:@"DELETE FROM myCheck WHERE ID = %ld",(long)ID];
+        BOOL res = [_db executeUpdate:deleteSql];
+        
+        if (!res) {
+            NSLog(@"删除ID:%d出错",ID);
+        } else {
+            NSLog(@"删除ID:%d成功",ID);
+        }
+        [_db close];
+    }
+    return YES;
 }
 @end
