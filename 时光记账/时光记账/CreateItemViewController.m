@@ -227,8 +227,23 @@
     UIAlertController *pickPictureController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:nil];
-    UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        //调用相机
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing=YES;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+
+    }];
+    UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        //调用相册
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+        imagePickerController.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing=YES;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+    }];
     [pickPictureController addAction:cancelAction];
     [pickPictureController addAction:deleteAction];
     [pickPictureController addAction:archiveAction];
@@ -240,8 +255,8 @@
 -(void)shakeView:(UIView*)viewToShake
 {
     CGFloat t =2.0;
-    CGAffineTransform translateRight  =CGAffineTransformTranslate(CGAffineTransformIdentity, t,0.0);
-    CGAffineTransform translateLeft =CGAffineTransformTranslate(CGAffineTransformIdentity,-t,0.0);
+    CGAffineTransform translateRight  = CGAffineTransformTranslate(CGAffineTransformIdentity, t,0.0);
+    CGAffineTransform translateLeft = CGAffineTransformTranslate(CGAffineTransformIdentity,-t,0.0);
     
     viewToShake.transform = translateLeft;
     
@@ -467,5 +482,12 @@
     snapshot.layer.shadowOpacity = 0.4;
     
     return snapshot;
+}
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    //得到的是编辑后的图片
+    
+    UIImage *image=[info objectForKey:@"UIImagePickerControllerEditedImage"];//得到裁剪后的照片
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 @end
