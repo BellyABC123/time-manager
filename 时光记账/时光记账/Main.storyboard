@@ -209,28 +209,40 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" tag="203" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b6K-bU-LBX">
-                                                    <rect key="frame" x="219" y="20" width="45" height="45"/>
+                                                    <rect key="frame" x="224" y="23" width="40" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="45" id="Mga-4u-MY2"/>
-                                                        <constraint firstAttribute="height" constant="45" id="pJe-L4-ShI"/>
+                                                        <constraint firstAttribute="width" constant="40" id="Mga-4u-MY2"/>
+                                                        <constraint firstAttribute="height" constant="40" id="pJe-L4-ShI"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" tag="202" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oof-mQ-c0n">
-                                                    <rect key="frame" x="334" y="20" width="45" height="45"/>
+                                                    <rect key="frame" x="334" y="23" width="40" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="45" id="VOY-uz-BoG"/>
-                                                        <constraint firstAttribute="height" constant="45" id="dBG-qo-CcA"/>
+                                                        <constraint firstAttribute="width" constant="40" id="VOY-uz-BoG"/>
+                                                        <constraint firstAttribute="height" constant="40" id="dBG-qo-CcA"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="OD0-j9-Lw5" firstAttribute="top" secondItem="5Eo-J2-rSI" secondAttribute="topMargin" constant="22" id="3K3-ha-0wj"/>
                                                 <constraint firstAttribute="centerX" secondItem="Vru-9m-BL2" secondAttribute="centerX" id="74b-jN-epN"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="b6K-bU-LBX" secondAttribute="bottom" constant="-8" id="7Zf-CJ-bMU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="b6K-bU-LBX" secondAttribute="bottom" constant="-6" id="7Zf-CJ-bMU"/>
                                                 <constraint firstItem="Vru-9m-BL2" firstAttribute="top" secondItem="5Eo-J2-rSI" secondAttribute="topMargin" constant="22" id="Czp-5D-doz"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="uBA-SX-NSw" secondAttribute="bottom" constant="-8" id="G0Q-Ew-bTc"/>
                                                 <constraint firstItem="3ps-uE-cx8" firstAttribute="top" secondItem="5Eo-J2-rSI" secondAttribute="topMargin" constant="24" id="Hoz-8s-Wae"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Oof-mQ-c0n" secondAttribute="bottom" constant="-8" id="Ixu-fz-vm8"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Oof-mQ-c0n" secondAttribute="bottom" constant="-6" id="Ixu-fz-vm8"/>
                                                 <constraint firstItem="Xgl-fD-otO" firstAttribute="leading" secondItem="Vru-9m-BL2" secondAttribute="trailing" constant="8" id="OoB-Ij-Udm"/>
                                                 <constraint firstItem="OD0-j9-Lw5" firstAttribute="leading" secondItem="3ps-uE-cx8" secondAttribute="trailing" constant="8" id="Qa8-np-aLo"/>
                                                 <constraint firstItem="HUv-kS-kvA" firstAttribute="top" secondItem="5Eo-J2-rSI" secondAttribute="topMargin" constant="-8" id="ROp-fY-Sxp"/>
@@ -286,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJw-Qk-iaC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1141" y="-134"/>
+            <point key="canvasLocation" x="1140" y="-124"/>
         </scene>
         <!--Create Item View Controller-->
         <scene sceneID="oA1-t2-3oZ">

@@ -69,11 +69,11 @@ static MyDB * sharedDB;
         NSString * sqlWithID = [NSString stringWithFormat:@"SELECT * FROM myCheck WHERE ID = %d",ID];
         FMResultSet * result = [_db executeQuery:sqlWithID];
         [infoOfID setValue:[result stringForColumn:@"ID"] forKey:@"id"];
-        [infoOfID setValue:[result dataForColumn:@"DATE"] forKey:@"date"];
+        [infoOfID setValue:[result stringForColumn:@"DATE"] forKey:@"date"];
         [infoOfID setValue:[result stringForColumn:@"KINDS"] forKey:@"kinds"];
         [infoOfID setValue:[result stringForColumn:@"PRICE"] forKey:@"price"];
         [infoOfID setValue:[result stringForColumn:@"NOTE"] forKey:@"note"];
-        [infoOfID setValue:[result stringForColumn:@"PICTURE"] forKey:@"picture"];
+        [infoOfID setValue:[result dataForColumn:@"PICTURE"] forKey:@"picture"];
         [_db close];
     }
     return infoOfID;
@@ -88,11 +88,11 @@ static MyDB * sharedDB;
             NSMutableDictionary *someoneDic = [NSMutableDictionary dictionary];
             
             [someoneDic setValue:[result stringForColumn:@"ID"] forKey:@"id"];
-            [someoneDic setValue:[result dataForColumn:@"DATE"] forKey:@"date"];
+            [someoneDic setValue:[result stringForColumn:@"DATE"] forKey:@"date"];
             [someoneDic setValue:[result stringForColumn:@"KINDS"] forKey:@"kinds"];
             [someoneDic setValue:[result stringForColumn:@"PRICE"] forKey:@"price"];
             [someoneDic setValue:[result stringForColumn:@"NOTE"] forKey:@"note"];
-            [someoneDic setValue:[result stringForColumn:@"PICTURE"] forKey:@"picture"];
+            [someoneDic setValue:[result dataForColumn:@"PICTURE"] forKey:@"picture"];
             [checkAll addObject:someoneDic];
         }
         [_db close];

@@ -12,6 +12,7 @@
 
     NSMutableDictionary *witchIsClicked;
     NSMutableArray *arrayWithAllResult;
+    UIScrollView *detailImageScrollView;
     MyDB *myDB;
 }
 @end
@@ -57,6 +58,16 @@
     UILabel *remarkOutcome = (UILabel*)[cell viewWithTag:200];
     UIImageView *imageIncome = (UIImageView *)[cell viewWithTag:202];
     UIImageView *imageOutcome = (UIImageView *)[cell viewWithTag:203];
+    //设置两个ima
+    imageOutcome.userInteractionEnabled = YES;
+    imageIncome.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showImageDetail:)];
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showImageDetail:)];
+    tap1.numberOfTapsRequired = 1;
+    tap2.numberOfTapsRequired = 1;
+    [imageIncome addGestureRecognizer:tap1];
+    [imageOutcome addGestureRecognizer:tap2];
+    
     NSDictionary *dic  = [NSDictionary dictionaryWithDictionary:[arrayWithAllResult objectAtIndex:indexPath.row]];
     if ([[dic valueForKey:@"kinds"] isEqualToString:@"收入"]) {
         outCome.hidden = YES;
@@ -67,8 +78,6 @@
         [kindButton setBackgroundImage:[UIImage imageNamed:@"income"] forState:UIControlStateNormal];
         inCome.text = [NSString stringWithFormat:@"￥%@ 收入",[dic valueForKey:@"price"]];
         remarkIncome.text = [dic valueForKey:@"note"];
-        
-        
     }else{
         inCome.hidden = YES;
         outCome.hidden = NO;
@@ -79,10 +88,58 @@
         outCome.text = [NSString stringWithFormat:@"%@ ￥%@",[dic valueForKey:@"kinds"],[dic valueForKey:@"price"]];
         remarkOutcome.text = [dic valueForKey:@"note"];
     }
-    NSLog(@"%@",dic);
     return  cell;
 }
-
+//点击cell中的图片，放大，可以滚动查看
+-(void)showImageDetail:(id)sender{
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
+    UIImageView *imageView = (UIImageView*)tap.view;
+    
+    id tempView = [imageView superview];
+    while (![tempView isKindOfClass:[UITableViewCell class]]){
+        tempView = [tempView superview];
+    }
+    UITableViewCell *cell = (UITableViewCell*)tempView;
+    NSIndexPath *path = [_mainTableVie indexPathForCell:cell];
+    UIImage *detailImage = [UIImage imageWithData:[[arrayWithAllResult objectAtIndex:path.row] valueForKey:@"picture"]];
+    
+    CGPoint location = [tap locationInView:self.view];
+    UIImageView *detailImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, detailImage.size.width, detailImage.size.height)];
+    [detailImageView setImage:detailImage];
+    
+    detailImageScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(location.x - 5, location.y - 5, imageView.frame.size.width, imageView.frame.size.height)];
+    
+    NSArray *numArray = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%f",location.x-5],[NSString stringWithFormat:@"%f",location.y-5], [NSString stringWithFormat:@"%f",imageView.frame.size.width],[NSString stringWithFormat:@"%f",imageView.frame.size.height],nil];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:numArray forKey:@"originframe"];
+     
+    
+    [detailImageScrollView addSubview:detailImageView];
+    [self.view addSubview:detailImageScrollView];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        detailImageScrollView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    }completion:^(BOOL finished) {
+        detailImageScrollView.contentSize = detailImage.size;
+        //添加手势以便在次点击消失
+        UITapGestureRecognizer *tapHide = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideScrollView:)];
+        tapHide.numberOfTapsRequired = 1;
+        [detailImageScrollView addGestureRecognizer:tapHide];
+    }];
+    
+}
+-(void)hideScrollView:(id)sender{
+    UITapGestureRecognizer *tapHide = (UITapGestureRecognizer*)sender;
+    UIScrollView *myWantView = (UIScrollView*)tapHide.view;
+    NSArray *numArray = [[NSUserDefaults standardUserDefaults]objectForKey:@"originframe"];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        detailImageScrollView.frame = CGRectMake([[numArray objectAtIndex:0] floatValue], [[numArray objectAtIndex:1]floatValue], [[numArray objectAtIndex:2]floatValue], [[numArray objectAtIndex:3]floatValue]);
+    }completion:^(BOOL finished) {
+        [myWantView removeFromSuperview];
+    }];
+    
+}
 //点击消费类型图标按键
 - (IBAction)titleIconBtnClick:(UIButton *)sender {
     
