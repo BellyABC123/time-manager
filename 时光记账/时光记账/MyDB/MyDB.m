@@ -12,7 +12,7 @@ static MyDB * sharedDB;
 
 @implementation MyDB
 
-+(MyDB*)sharedDBManager{
++ (instancetype)sharedDBManager{
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         sharedDB = [[MyDB alloc]init];
@@ -30,7 +30,7 @@ static MyDB * sharedDB;
 //创建表
 -(BOOL)createTable{
     if ([_db open]) {
-        NSString *sqlCreateTable =  @"CREATE TABLE IF NOT EXISTS myCheck (ID INTEGER PRIMARY KEY AUTOINCREMENT,DATE TEXT,KINDS TEXT,PRICE TEXT,NOTE TEXT,CONSUMPTIONIMG BLOB,PICTURE BLOB)";
+        NSString *sqlCreateTable =  @"CREATE TABLE IF NOT EXISTS myCheck (ID INTEGER PRIMARY KEY AUTOINCREMENT,DATE TEXT,KINDS TEXT,PRICE TEXT,NOTE TEXT,PICTURE BLOB)";
         BOOL result = [_db executeUpdate:sqlCreateTable];
         
         if (!result) {
@@ -45,14 +45,13 @@ static MyDB * sharedDB;
 //把消费项目添加到数据库当中
 -(BOOL)insertInfoToTableWithParameters:(NSDictionary *)parameters{
     if ([_db open]) {
-        NSString *sqlInsertInfoToTable = @"INSERT INTO myCheck (DATE, KINDS, PRICE, NOTE, CONSUMPTIONIMG,PICTURE) VALUES (?, ?, ?, ?, ?)";
+        NSString *sqlInsertInfoToTable = @"INSERT INTO myCheck (DATE, KINDS, PRICE, NOTE,PICTURE) VALUES (?, ?, ?, ?, ?)";
         BOOL result = [_db executeUpdate:sqlInsertInfoToTable,
-                       [parameters objectForKey:@"date"],
-                       [parameters objectForKey:@"kinds"],
-                       [parameters objectForKey:@"price"],
-                       [parameters objectForKey:@"note"],
-                       [parameters objectForKey:@"consumptionimg"],
-                       [parameters objectForKey:@"picture"]
+                       [parameters valueForKey:@"date"],
+                       [parameters valueForKey:@"kinds"],
+                       [parameters valueForKey:@"price"],
+                       [parameters valueForKey:@"note"],
+                       [parameters valueForKey:@"picture"]
                        ];
         if (!result) {
             NSLog(@"error when insert db table");
@@ -69,13 +68,12 @@ static MyDB * sharedDB;
     if ([_db open]) {
         NSString * sqlWithID = [NSString stringWithFormat:@"SELECT * FROM myCheck WHERE ID = %d",ID];
         FMResultSet * result = [_db executeQuery:sqlWithID];
-        [infoOfID setObject:[result stringForColumn:@"ID"] forKey:@"id"];
-        [infoOfID setObject:[result dataForColumn:@"DATE"] forKey:@"date"];
-        [infoOfID setObject:[result stringForColumn:@"KINDS"] forKey:@"kinds"];
-        [infoOfID setObject:[result stringForColumn:@"PRICE"] forKey:@"price"];
-        [infoOfID setObject:[result stringForColumn:@"NOTE"] forKey:@"note"];
-        [infoOfID setObject:[result stringForColumn:@"CONSUMPTIONIMG"] forKey:@"consumptionimg"];
-        [infoOfID setObject:[result stringForColumn:@"PICTURE"] forKey:@"picture"];
+        [infoOfID setValue:[result stringForColumn:@"ID"] forKey:@"id"];
+        [infoOfID setValue:[result dataForColumn:@"DATE"] forKey:@"date"];
+        [infoOfID setValue:[result stringForColumn:@"KINDS"] forKey:@"kinds"];
+        [infoOfID setValue:[result stringForColumn:@"PRICE"] forKey:@"price"];
+        [infoOfID setValue:[result stringForColumn:@"NOTE"] forKey:@"note"];
+        [infoOfID setValue:[result stringForColumn:@"PICTURE"] forKey:@"picture"];
         [_db close];
     }
     return infoOfID;
@@ -89,13 +87,12 @@ static MyDB * sharedDB;
         while ([result next]) {
             NSMutableDictionary *someoneDic = [NSMutableDictionary dictionary];
             
-            [someoneDic setObject:[result stringForColumn:@"ID"] forKey:@"id"];
-            [someoneDic setObject:[result dataForColumn:@"DATE"] forKey:@"date"];
-            [someoneDic setObject:[result stringForColumn:@"KINDS"] forKey:@"kinds"];
-            [someoneDic setObject:[result stringForColumn:@"PRICE"] forKey:@"price"];
-            [someoneDic setObject:[result stringForColumn:@"NOTE"] forKey:@"note"];
-            [someoneDic setObject:[result stringForColumn:@"CONSUMPTIONIMG"] forKey:@"consumptionimg"];
-            [someoneDic setObject:[result stringForColumn:@"PICTURE"] forKey:@"picture"];
+            [someoneDic setValue:[result stringForColumn:@"ID"] forKey:@"id"];
+            [someoneDic setValue:[result dataForColumn:@"DATE"] forKey:@"date"];
+            [someoneDic setValue:[result stringForColumn:@"KINDS"] forKey:@"kinds"];
+            [someoneDic setValue:[result stringForColumn:@"PRICE"] forKey:@"price"];
+            [someoneDic setValue:[result stringForColumn:@"NOTE"] forKey:@"note"];
+            [someoneDic setValue:[result stringForColumn:@"PICTURE"] forKey:@"picture"];
             [checkAll addObject:someoneDic];
         }
         [_db close];

@@ -8,6 +8,7 @@
 
 #import "CreateItemViewController.h"
 #import "AudioToolbox/AudioToolbox.h"
+#import "MyDB.h"
 
 @interface CreateItemViewController (){
     
@@ -20,6 +21,7 @@
     float totalPrice;
     BOOL _isTaped;
     BOOL isPointClick;
+    MyDB *_myDB;
 }
 
 @end
@@ -50,6 +52,9 @@
     
     //默认备注为空
     [collectInfoDictionary setValue:@"" forKey:@"note"];
+    
+    //默认拍照片为空
+    [collectInfoDictionary setValue:[NSData data] forKey:@"picture"];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapGesture)];
     tapGesture.numberOfTapsRequired = 1;
@@ -145,17 +150,19 @@
                 [sender setTitle:@"OK" forState:UIControlStateNormal];
             }else{
                 if (priceFloatNum == 0.0) {
-                    
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"请输入金额" message:nil delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
+                    [alertView show];
                 }else{
                     _isTaped = YES;
                     [self hidenTopViewAndKeyboardView];
                     [collectInfoDictionary setValue:@(priceFloatNum) forKey:@"price"];
                     
-                    
-                    
-                    
-                    //跳转到首页
-                    [self dismissViewControllerAnimated:YES completion:nil];
+                    _myDB = [MyDB sharedDBManager];
+                    [_myDB createTable];
+                    if([_myDB insertInfoToTableWithParameters:collectInfoDictionary]){
+                        //跳转到首页
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }
                 }
                 NSLog(@"就是这么多钱 -------> %0.1f",priceFloatNum);
             }
@@ -483,10 +490,13 @@
     
     return snapshot;
 }
+//相机或相册选择图片之后的回调方法
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     //得到的是编辑后的图片
-    
-    UIImage *image=[info objectForKey:@"UIImagePickerControllerEditedImage"];//得到裁剪后的照片
+    UIImage *image=[info objectForKey:@"UIImagePickerControllerEditedImage"];
+    //把图片转化成二进制
+    NSData *dataImg = UIImagePNGRepresentation(image);
+    [collectInfoDictionary setValue:dataImg forKey:@"picture"];
     
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
