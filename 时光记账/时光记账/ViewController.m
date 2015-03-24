@@ -13,6 +13,8 @@
     NSMutableDictionary *witchIsClicked;
     NSMutableArray *arrayWithAllResult;
     UIScrollView *detailImageScrollView;
+    float totalIncome;
+    float totalOutcome;
     MyDB *myDB;
 }
 @end
@@ -31,8 +33,20 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     myDB = [MyDB sharedDBManager];
+    [arrayWithAllResult removeAllObjects];
     arrayWithAllResult = [NSMutableArray arrayWithArray:[myDB queryAll]];
+    for (NSDictionary *perDic in arrayWithAllResult) {
+        if ([[perDic valueForKey:@"kinds"] isEqualToString:@"收入"]) {
+            totalIncome +=  [[perDic valueForKey:@"price"] floatValue];
+        }else{
+            totalOutcome += [[perDic valueForKey:@"price"] floatValue];
+        }
+    }
+    _totalIncomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalIncome];
+    _totalOutcomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalOutcome];
+    
     [_mainTableVie reloadData];
+    
 }
 - (void)didReceiveMemoryWarning {
     
@@ -58,7 +72,8 @@
     UILabel *remarkOutcome = (UILabel*)[cell viewWithTag:200];
     UIImageView *imageIncome = (UIImageView *)[cell viewWithTag:202];
     UIImageView *imageOutcome = (UIImageView *)[cell viewWithTag:203];
-    //设置两个ima
+    
+    //设置两个imageView的单机手势
     imageOutcome.userInteractionEnabled = YES;
     imageIncome.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showImageDetail:)];
@@ -68,24 +83,41 @@
     [imageIncome addGestureRecognizer:tap1];
     [imageOutcome addGestureRecognizer:tap2];
     
+    [imageIncome setImage:nil];
+    [imageOutcome setImage:nil];
+    
     NSDictionary *dic  = [NSDictionary dictionaryWithDictionary:[arrayWithAllResult objectAtIndex:indexPath.row]];
     if ([[dic valueForKey:@"kinds"] isEqualToString:@"收入"]) {
-        outCome.hidden = YES;
-        inCome.hidden = NO;
-        imageIncome.hidden = NO;
-        imageOutcome.hidden = YES;
-        [imageIncome setImage:[UIImage imageWithData:[dic valueForKey:@"picture"]]];
+        [imageIncome setImage:nil];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *image = [UIImage imageWithData:[dic valueForKey:@"picture"]];
+            if (image) {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [imageIncome setImage:image];
+                });
+            }
+        
+        });
+
         [kindButton setBackgroundImage:[UIImage imageNamed:@"income"] forState:UIControlStateNormal];
         inCome.text = [NSString stringWithFormat:@"￥%@ 收入",[dic valueForKey:@"price"]];
+        outCome.text = nil;
         remarkIncome.text = [dic valueForKey:@"note"];
+        remarkOutcome.text = nil;
     }else{
-        inCome.hidden = YES;
-        outCome.hidden = NO;
-        imageIncome.hidden = YES;
-        imageOutcome.hidden = NO;
-        [imageOutcome setImage:[UIImage imageWithData:[dic valueForKey:@"picture"]]];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImage *image = [UIImage imageWithData:[dic valueForKey:@"picture"]];
+            if (image) {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [imageOutcome setImage:image];
+                });
+            }
+            
+        });
         [kindButton setBackgroundImage:[UIImage imageNamed:@"custom"] forState:UIControlStateNormal];
+        inCome.text = nil;
         outCome.text = [NSString stringWithFormat:@"%@ ￥%@",[dic valueForKey:@"kinds"],[dic valueForKey:@"price"]];
+        remarkIncome.text  = nil;
         remarkOutcome.text = [dic valueForKey:@"note"];
     }
     return  cell;
@@ -128,6 +160,7 @@
     }];
     
 }
+//点击放大到全屏幕的图片 让其消失
 -(void)hideScrollView:(id)sender{
     UITapGestureRecognizer *tapHide = (UITapGestureRecognizer*)sender;
     UIScrollView *myWantView = (UIScrollView*)tapHide.view;
@@ -225,7 +258,7 @@
         }
     }
 }
-
+//点击 +  号按钮
 - (IBAction)addNewCount:(UIButton *)sender {
     
     [self closeAlready];

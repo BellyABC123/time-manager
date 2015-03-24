@@ -43,7 +43,7 @@
                                 <color key="textColor" red="0.47883450259999999" green="0.4536290113" blue="0.44625315770000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXc-au-2VY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXc-au-2VY">
                                 <rect key="frame" x="32" y="181" width="70" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Qat-sc-jDj"/>
@@ -53,7 +53,7 @@
                                 <color key="textColor" red="0.47883450259999999" green="0.4536290113" blue="0.44625315770000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xW-BC-chu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xW-BC-chu">
                                 <rect key="frame" x="498" y="181" width="70" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="NOy-5r-4eC"/>
@@ -293,6 +293,8 @@
                     <connections>
                         <outlet property="addNewCountButton" destination="5rR-wf-Z6y" id="J1a-62-3G0"/>
                         <outlet property="mainTableVie" destination="O5U-v9-Smw" id="CTv-0F-MsP"/>
+                        <outlet property="totalIncomeLabel" destination="JXc-au-2VY" id="Uq0-7u-fs0"/>
+                        <outlet property="totalOutcomeLabel" destination="2xW-BC-chu" id="03R-hp-FKl"/>
                         <segue destination="2DT-XW-mFr" kind="show" identifier="showcreateitemviewcontroller" id="kSB-lv-Upk"/>
                     </connections>
                 </viewController>
