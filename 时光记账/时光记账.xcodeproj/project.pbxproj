@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F24BF1231A7B0DB000E0767A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F24BF1191A7B0DB000E0767A /* FMDatabase.m */; };
-		F24BF1241A7B0DB000E0767A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F24BF11B1A7B0DB000E0767A /* FMDatabaseAdditions.m */; };
-		F24BF1251A7B0DB000E0767A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = F24BF11D1A7B0DB000E0767A /* FMDatabasePool.m */; };
-		F24BF1261A7B0DB000E0767A /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F24BF11F1A7B0DB000E0767A /* FMDatabaseQueue.m */; };
-		F24BF1271A7B0DB000E0767A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F24BF1221A7B0DB000E0767A /* FMResultSet.m */; };
 		F24BF1291A7B0DD900E0767A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F24BF1281A7B0DD900E0767A /* libsqlite3.dylib */; };
-		F24BF12D1A7B2B4E00E0767A /* MyDB.m in Sources */ = {isa = PBXBuildFile; fileRef = F24BF12C1A7B2B4E00E0767A /* MyDB.m */; };
 		F258EAE41AB2C5CE00855F07 /* consumptiontype.plist in Resources */ = {isa = PBXBuildFile; fileRef = F258EAE31AB2C5CE00855F07 /* consumptiontype.plist */; };
-		F26096B51A8B06F4006657B4 /* MasonryViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F26096B41A8B06F4006657B4 /* MasonryViewLayout.m */; };
 		F263687F1A79CDBB00DC418F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F263687E1A79CDBB00DC418F /* main.m */; };
 		F26368821A79CDBB00DC418F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F26368811A79CDBB00DC418F /* AppDelegate.m */; };
 		F263688A1A79CDBC00DC418F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F26368891A79CDBC00DC418F /* Images.xcassets */; };
 		F26368991A79CDBC00DC418F /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F26368981A79CDBC00DC418F /* ____Tests.m */; };
-		F26368A51A79CE1100DC418F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26368A21A79CE1100DC418F /* Main.storyboard */; };
-		F26368A61A79CE1100DC418F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26368A41A79CE1100DC418F /* MainViewController.m */; };
 		F26368A81A79CE5900DC418F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26368A71A79CE5900DC418F /* LaunchScreen.xib */; };
 		F26E130E1A7A0B43009C4DA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E130D1A7A0B43009C4DA5 /* UIKit.framework */; };
 		F26E13101A7A0B4F009C4DA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E130F1A7A0B4F009C4DA5 /* Foundation.framework */; };
 		F26E13121A7A0B5C009C4DA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E13111A7A0B5C009C4DA5 /* CoreGraphics.framework */; };
-		F26E13151A7A269C009C4DA5 /* CreateItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26E13141A7A269C009C4DA5 /* CreateItemViewController.m */; };
-		F28C1BB41AC176470001D7F6 /* EditConsumptionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C1BB31AC176470001D7F6 /* EditConsumptionInfoViewController.m */; };
-		F29800091A88C01B000E7760 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F29800081A88C01B000E7760 /* CalendarView.m */; };
+		F2C24D6D1AC23BA7005DF4F9 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D691AC23BA7005DF4F9 /* CalendarView.m */; };
+		F2C24D6E1AC23BA7005DF4F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2C24D6A1AC23BA7005DF4F9 /* Main.storyboard */; };
+		F2C24D6F1AC23BA7005DF4F9 /* MasonryViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D6C1AC23BA7005DF4F9 /* MasonryViewLayout.m */; };
+		F2C24D7F1AC23BAF005DF4F9 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D721AC23BAF005DF4F9 /* FMDatabase.m */; };
+		F2C24D801AC23BAF005DF4F9 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D741AC23BAF005DF4F9 /* FMDatabaseAdditions.m */; };
+		F2C24D811AC23BAF005DF4F9 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D761AC23BAF005DF4F9 /* FMDatabasePool.m */; };
+		F2C24D821AC23BAF005DF4F9 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D781AC23BAF005DF4F9 /* FMDatabaseQueue.m */; };
+		F2C24D831AC23BAF005DF4F9 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D7B1AC23BAF005DF4F9 /* FMResultSet.m */; };
+		F2C24D841AC23BAF005DF4F9 /* MyDB.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D7E1AC23BAF005DF4F9 /* MyDB.m */; };
+		F2C24D8B1AC23BB7005DF4F9 /* CreateItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D861AC23BB7005DF4F9 /* CreateItemViewController.m */; };
+		F2C24D8C1AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D881AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m */; };
+		F2C24D8D1AC23BB7005DF4F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D8A1AC23BB7005DF4F9 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,23 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F24BF1181A7B0DB000E0767A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		F24BF1191A7B0DB000E0767A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		F24BF11A1A7B0DB000E0767A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		F24BF11B1A7B0DB000E0767A /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		F24BF11C1A7B0DB000E0767A /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
-		F24BF11D1A7B0DB000E0767A /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
-		F24BF11E1A7B0DB000E0767A /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
-		F24BF11F1A7B0DB000E0767A /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
-		F24BF1201A7B0DB000E0767A /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
-		F24BF1211A7B0DB000E0767A /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		F24BF1221A7B0DB000E0767A /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		F24BF1281A7B0DD900E0767A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		F24BF12B1A7B2B4E00E0767A /* MyDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDB.h; sourceTree = "<group>"; };
-		F24BF12C1A7B2B4E00E0767A /* MyDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDB.m; sourceTree = "<group>"; };
 		F258EAE31AB2C5CE00855F07 /* consumptiontype.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = consumptiontype.plist; sourceTree = "<group>"; };
-		F26096B31A8B06F4006657B4 /* MasonryViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasonryViewLayout.h; sourceTree = "<group>"; };
-		F26096B41A8B06F4006657B4 /* MasonryViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasonryViewLayout.m; sourceTree = "<group>"; };
 		F26368791A79CDBB00DC418F /* 时光记账.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "时光记账.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F263687D1A79CDBB00DC418F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F263687E1A79CDBB00DC418F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -68,19 +53,34 @@
 		F26368921A79CDBC00DC418F /* 时光记账Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "时光记账Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26368971A79CDBC00DC418F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F26368981A79CDBC00DC418F /* ____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____Tests.m"; sourceTree = "<group>"; };
-		F26368A21A79CE1100DC418F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F26368A31A79CE1100DC418F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		F26368A41A79CE1100DC418F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F26368A71A79CE5900DC418F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		F26E130D1A7A0B43009C4DA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F26E130F1A7A0B4F009C4DA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F26E13111A7A0B5C009C4DA5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F26E13131A7A269C009C4DA5 /* CreateItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateItemViewController.h; sourceTree = "<group>"; };
-		F26E13141A7A269C009C4DA5 /* CreateItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateItemViewController.m; sourceTree = "<group>"; };
-		F28C1BB21AC176470001D7F6 /* EditConsumptionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditConsumptionInfoViewController.h; sourceTree = "<group>"; };
-		F28C1BB31AC176470001D7F6 /* EditConsumptionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditConsumptionInfoViewController.m; sourceTree = "<group>"; };
-		F29800071A88C01B000E7760 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
-		F29800081A88C01B000E7760 /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
+		F2C24D681AC23BA7005DF4F9 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
+		F2C24D691AC23BA7005DF4F9 /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
+		F2C24D6A1AC23BA7005DF4F9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F2C24D6B1AC23BA7005DF4F9 /* MasonryViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasonryViewLayout.h; sourceTree = "<group>"; };
+		F2C24D6C1AC23BA7005DF4F9 /* MasonryViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasonryViewLayout.m; sourceTree = "<group>"; };
+		F2C24D711AC23BAF005DF4F9 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		F2C24D721AC23BAF005DF4F9 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		F2C24D731AC23BAF005DF4F9 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		F2C24D741AC23BAF005DF4F9 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		F2C24D751AC23BAF005DF4F9 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		F2C24D761AC23BAF005DF4F9 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		F2C24D771AC23BAF005DF4F9 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		F2C24D781AC23BAF005DF4F9 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		F2C24D791AC23BAF005DF4F9 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		F2C24D7A1AC23BAF005DF4F9 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		F2C24D7B1AC23BAF005DF4F9 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		F2C24D7D1AC23BAF005DF4F9 /* MyDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDB.h; sourceTree = "<group>"; };
+		F2C24D7E1AC23BAF005DF4F9 /* MyDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDB.m; sourceTree = "<group>"; };
+		F2C24D851AC23BB7005DF4F9 /* CreateItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateItemViewController.h; sourceTree = "<group>"; };
+		F2C24D861AC23BB7005DF4F9 /* CreateItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateItemViewController.m; sourceTree = "<group>"; };
+		F2C24D871AC23BB7005DF4F9 /* EditConsumptionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditConsumptionInfoViewController.h; sourceTree = "<group>"; };
+		F2C24D881AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditConsumptionInfoViewController.m; sourceTree = "<group>"; };
+		F2C24D891AC23BB7005DF4F9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		F2C24D8A1AC23BB7005DF4F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,33 +105,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F24BF1171A7B0DB000E0767A /* FMDB */ = {
-			isa = PBXGroup;
-			children = (
-				F24BF1181A7B0DB000E0767A /* FMDatabase.h */,
-				F24BF1191A7B0DB000E0767A /* FMDatabase.m */,
-				F24BF11A1A7B0DB000E0767A /* FMDatabaseAdditions.h */,
-				F24BF11B1A7B0DB000E0767A /* FMDatabaseAdditions.m */,
-				F24BF11C1A7B0DB000E0767A /* FMDatabasePool.h */,
-				F24BF11D1A7B0DB000E0767A /* FMDatabasePool.m */,
-				F24BF11E1A7B0DB000E0767A /* FMDatabaseQueue.h */,
-				F24BF11F1A7B0DB000E0767A /* FMDatabaseQueue.m */,
-				F24BF1201A7B0DB000E0767A /* FMDB.h */,
-				F24BF1211A7B0DB000E0767A /* FMResultSet.h */,
-				F24BF1221A7B0DB000E0767A /* FMResultSet.m */,
-			);
-			path = FMDB;
-			sourceTree = "<group>";
-		};
-		F24BF12A1A7B1D2F00E0767A /* MyDB */ = {
-			isa = PBXGroup;
-			children = (
-				F24BF12B1A7B2B4E00E0767A /* MyDB.h */,
-				F24BF12C1A7B2B4E00E0767A /* MyDB.m */,
-			);
-			path = MyDB;
-			sourceTree = "<group>";
-		};
 		F26368701A79CDBB00DC418F = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +131,7 @@
 				F26368811A79CDBB00DC418F /* AppDelegate.m */,
 				F26368891A79CDBC00DC418F /* Images.xcassets */,
 				F26368A71A79CE5900DC418F /* LaunchScreen.xib */,
-				F26368A91A79CEA200DC418F /* 主页 */,
+				F2C24D611AC23A16005DF4F9 /* 主页 */,
 				F263687C1A79CDBB00DC418F /* Supporting Files */,
 			);
 			path = "时光记账";
@@ -191,16 +164,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F26368A91A79CEA200DC418F /* 主页 */ = {
-			isa = PBXGroup;
-			children = (
-				F26E13181A7A2B99009C4DA5 /* Model */,
-				F26E13161A7A2B80009C4DA5 /* View */,
-				F26E13171A7A2B88009C4DA5 /* Controller */,
-			);
-			name = "主页";
-			sourceTree = "<group>";
-		};
 		F26E130C1A7A0B21009C4DA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,38 +175,75 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F26E13161A7A2B80009C4DA5 /* View */ = {
+		F2C24D611AC23A16005DF4F9 /* 主页 */ = {
 			isa = PBXGroup;
 			children = (
-				F26368A21A79CE1100DC418F /* Main.storyboard */,
+				F2C24D631AC23AAA005DF4F9 /* Model */,
+				F2C24D641AC23AAA005DF4F9 /* View */,
+				F2C24D621AC23AAA005DF4F9 /* Controller */,
 			);
-			name = View;
+			path = "主页";
 			sourceTree = "<group>";
 		};
-		F26E13171A7A2B88009C4DA5 /* Controller */ = {
+		F2C24D621AC23AAA005DF4F9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F26368A31A79CE1100DC418F /* MainViewController.h */,
-				F26368A41A79CE1100DC418F /* MainViewController.m */,
-				F26E13131A7A269C009C4DA5 /* CreateItemViewController.h */,
-				F26E13141A7A269C009C4DA5 /* CreateItemViewController.m */,
-				F28C1BB21AC176470001D7F6 /* EditConsumptionInfoViewController.h */,
-				F28C1BB31AC176470001D7F6 /* EditConsumptionInfoViewController.m */,
+				F2C24D851AC23BB7005DF4F9 /* CreateItemViewController.h */,
+				F2C24D861AC23BB7005DF4F9 /* CreateItemViewController.m */,
+				F2C24D871AC23BB7005DF4F9 /* EditConsumptionInfoViewController.h */,
+				F2C24D881AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m */,
+				F2C24D891AC23BB7005DF4F9 /* MainViewController.h */,
+				F2C24D8A1AC23BB7005DF4F9 /* MainViewController.m */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		F26E13181A7A2B99009C4DA5 /* Model */ = {
+		F2C24D631AC23AAA005DF4F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F26096B31A8B06F4006657B4 /* MasonryViewLayout.h */,
-				F26096B41A8B06F4006657B4 /* MasonryViewLayout.m */,
-				F29800071A88C01B000E7760 /* CalendarView.h */,
-				F29800081A88C01B000E7760 /* CalendarView.m */,
-				F24BF12A1A7B1D2F00E0767A /* MyDB */,
-				F24BF1171A7B0DB000E0767A /* FMDB */,
+				F2C24D701AC23BAF005DF4F9 /* FMDB */,
+				F2C24D7C1AC23BAF005DF4F9 /* MyDB */,
 			);
-			name = Model;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2C24D641AC23AAA005DF4F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2C24D6A1AC23BA7005DF4F9 /* Main.storyboard */,
+				F2C24D681AC23BA7005DF4F9 /* CalendarView.h */,
+				F2C24D691AC23BA7005DF4F9 /* CalendarView.m */,
+				F2C24D6B1AC23BA7005DF4F9 /* MasonryViewLayout.h */,
+				F2C24D6C1AC23BA7005DF4F9 /* MasonryViewLayout.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F2C24D701AC23BAF005DF4F9 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				F2C24D711AC23BAF005DF4F9 /* FMDatabase.h */,
+				F2C24D721AC23BAF005DF4F9 /* FMDatabase.m */,
+				F2C24D731AC23BAF005DF4F9 /* FMDatabaseAdditions.h */,
+				F2C24D741AC23BAF005DF4F9 /* FMDatabaseAdditions.m */,
+				F2C24D751AC23BAF005DF4F9 /* FMDatabasePool.h */,
+				F2C24D761AC23BAF005DF4F9 /* FMDatabasePool.m */,
+				F2C24D771AC23BAF005DF4F9 /* FMDatabaseQueue.h */,
+				F2C24D781AC23BAF005DF4F9 /* FMDatabaseQueue.m */,
+				F2C24D791AC23BAF005DF4F9 /* FMDB.h */,
+				F2C24D7A1AC23BAF005DF4F9 /* FMResultSet.h */,
+				F2C24D7B1AC23BAF005DF4F9 /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		F2C24D7C1AC23BAF005DF4F9 /* MyDB */ = {
+			isa = PBXGroup;
+			children = (
+				F2C24D7D1AC23BAF005DF4F9 /* MyDB.h */,
+				F2C24D7E1AC23BAF005DF4F9 /* MyDB.m */,
+			);
+			path = MyDB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,9 +327,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F258EAE41AB2C5CE00855F07 /* consumptiontype.plist in Resources */,
-				F26368A51A79CE1100DC418F /* Main.storyboard in Resources */,
 				F26368A81A79CE5900DC418F /* LaunchScreen.xib in Resources */,
 				F263688A1A79CDBC00DC418F /* Images.xcassets in Resources */,
+				F2C24D6E1AC23BA7005DF4F9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,19 +347,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F26096B51A8B06F4006657B4 /* MasonryViewLayout.m in Sources */,
-				F26368A61A79CE1100DC418F /* MainViewController.m in Sources */,
-				F24BF1261A7B0DB000E0767A /* FMDatabaseQueue.m in Sources */,
+				F2C24D6F1AC23BA7005DF4F9 /* MasonryViewLayout.m in Sources */,
+				F2C24D821AC23BAF005DF4F9 /* FMDatabaseQueue.m in Sources */,
+				F2C24D6D1AC23BA7005DF4F9 /* CalendarView.m in Sources */,
 				F26368821A79CDBB00DC418F /* AppDelegate.m in Sources */,
-				F29800091A88C01B000E7760 /* CalendarView.m in Sources */,
+				F2C24D8D1AC23BB7005DF4F9 /* MainViewController.m in Sources */,
+				F2C24D7F1AC23BAF005DF4F9 /* FMDatabase.m in Sources */,
+				F2C24D841AC23BAF005DF4F9 /* MyDB.m in Sources */,
+				F2C24D811AC23BAF005DF4F9 /* FMDatabasePool.m in Sources */,
+				F2C24D831AC23BAF005DF4F9 /* FMResultSet.m in Sources */,
 				F263687F1A79CDBB00DC418F /* main.m in Sources */,
-				F24BF1231A7B0DB000E0767A /* FMDatabase.m in Sources */,
-				F24BF12D1A7B2B4E00E0767A /* MyDB.m in Sources */,
-				F24BF1251A7B0DB000E0767A /* FMDatabasePool.m in Sources */,
-				F28C1BB41AC176470001D7F6 /* EditConsumptionInfoViewController.m in Sources */,
-				F24BF1271A7B0DB000E0767A /* FMResultSet.m in Sources */,
-				F26E13151A7A269C009C4DA5 /* CreateItemViewController.m in Sources */,
-				F24BF1241A7B0DB000E0767A /* FMDatabaseAdditions.m in Sources */,
+				F2C24D8B1AC23BB7005DF4F9 /* CreateItemViewController.m in Sources */,
+				F2C24D8C1AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m in Sources */,
+				F2C24D801AC23BAF005DF4F9 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
