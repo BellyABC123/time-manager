@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  时光记账
 //
 //  Created by 海若 on 15-1-28.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableVie;
 @property (weak, nonatomic) IBOutlet UIButton *addNewCountButton;

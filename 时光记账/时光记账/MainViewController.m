@@ -1,14 +1,14 @@
 //
-//  ViewController.m
+//  MainViewController
 //  时光记账
 //
 //  Created by 海若 on 15-1-28.
 //  Copyright (c) 2015年 517na. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "MyDB.h"
-@interface ViewController (){
+@interface MainViewController (){
 
     NSMutableDictionary *witchIsClicked;
     NSMutableArray *arrayWithAllResult;
@@ -19,7 +19,7 @@
 }
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -21,12 +21,13 @@
 		F263688A1A79CDBC00DC418F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F26368891A79CDBC00DC418F /* Images.xcassets */; };
 		F26368991A79CDBC00DC418F /* ____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F26368981A79CDBC00DC418F /* ____Tests.m */; };
 		F26368A51A79CE1100DC418F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26368A21A79CE1100DC418F /* Main.storyboard */; };
-		F26368A61A79CE1100DC418F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26368A41A79CE1100DC418F /* ViewController.m */; };
+		F26368A61A79CE1100DC418F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26368A41A79CE1100DC418F /* MainViewController.m */; };
 		F26368A81A79CE5900DC418F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26368A71A79CE5900DC418F /* LaunchScreen.xib */; };
 		F26E130E1A7A0B43009C4DA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E130D1A7A0B43009C4DA5 /* UIKit.framework */; };
 		F26E13101A7A0B4F009C4DA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E130F1A7A0B4F009C4DA5 /* Foundation.framework */; };
 		F26E13121A7A0B5C009C4DA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E13111A7A0B5C009C4DA5 /* CoreGraphics.framework */; };
 		F26E13151A7A269C009C4DA5 /* CreateItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26E13141A7A269C009C4DA5 /* CreateItemViewController.m */; };
+		F28C1BB41AC176470001D7F6 /* EditConsumptionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C1BB31AC176470001D7F6 /* EditConsumptionInfoViewController.m */; };
 		F29800091A88C01B000E7760 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F29800081A88C01B000E7760 /* CalendarView.m */; };
 /* End PBXBuildFile section */
 
@@ -68,14 +69,16 @@
 		F26368971A79CDBC00DC418F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F26368981A79CDBC00DC418F /* ____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "____Tests.m"; sourceTree = "<group>"; };
 		F26368A21A79CE1100DC418F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		F26368A31A79CE1100DC418F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F26368A41A79CE1100DC418F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F26368A31A79CE1100DC418F /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		F26368A41A79CE1100DC418F /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F26368A71A79CE5900DC418F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		F26E130D1A7A0B43009C4DA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F26E130F1A7A0B4F009C4DA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F26E13111A7A0B5C009C4DA5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F26E13131A7A269C009C4DA5 /* CreateItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateItemViewController.h; sourceTree = "<group>"; };
 		F26E13141A7A269C009C4DA5 /* CreateItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateItemViewController.m; sourceTree = "<group>"; };
+		F28C1BB21AC176470001D7F6 /* EditConsumptionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditConsumptionInfoViewController.h; sourceTree = "<group>"; };
+		F28C1BB31AC176470001D7F6 /* EditConsumptionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditConsumptionInfoViewController.m; sourceTree = "<group>"; };
 		F29800071A88C01B000E7760 /* CalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarView.h; sourceTree = "<group>"; };
 		F29800081A88C01B000E7760 /* CalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,10 +223,12 @@
 		F26E13171A7A2B88009C4DA5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F26368A31A79CE1100DC418F /* ViewController.h */,
-				F26368A41A79CE1100DC418F /* ViewController.m */,
+				F26368A31A79CE1100DC418F /* MainViewController.h */,
+				F26368A41A79CE1100DC418F /* MainViewController.m */,
 				F26E13131A7A269C009C4DA5 /* CreateItemViewController.h */,
 				F26E13141A7A269C009C4DA5 /* CreateItemViewController.m */,
+				F28C1BB21AC176470001D7F6 /* EditConsumptionInfoViewController.h */,
+				F28C1BB31AC176470001D7F6 /* EditConsumptionInfoViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -343,7 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F26096B51A8B06F4006657B4 /* MasonryViewLayout.m in Sources */,
-				F26368A61A79CE1100DC418F /* ViewController.m in Sources */,
+				F26368A61A79CE1100DC418F /* MainViewController.m in Sources */,
 				F24BF1261A7B0DB000E0767A /* FMDatabaseQueue.m in Sources */,
 				F26368821A79CDBB00DC418F /* AppDelegate.m in Sources */,
 				F29800091A88C01B000E7760 /* CalendarView.m in Sources */,
@@ -351,6 +356,7 @@
 				F24BF1231A7B0DB000E0767A /* FMDatabase.m in Sources */,
 				F24BF12D1A7B2B4E00E0767A /* MyDB.m in Sources */,
 				F24BF1251A7B0DB000E0767A /* FMDatabasePool.m in Sources */,
+				F28C1BB41AC176470001D7F6 /* EditConsumptionInfoViewController.m in Sources */,
 				F24BF1271A7B0DB000E0767A /* FMResultSet.m in Sources */,
 				F26E13151A7A269C009C4DA5 /* CreateItemViewController.m in Sources */,
 				F24BF1241A7B0DB000E0767A /* FMDatabaseAdditions.m in Sources */,
