@@ -23,11 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     myDB = [MyDB sharedDBManager];
     witchIsClicked = [NSMutableDictionary dictionaryWithCapacity:10];
-    
     //去除tableviewcell的分割线
     [_mainTableVie setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
     //把Button设置成原型，直接把圆角设置成正方形边长的一半即可
     _addNewCountButton.layer.cornerRadius = _addNewCountButton.frame.size.width/2;
     
@@ -114,6 +113,19 @@
         remarkOutcome.text = [dic valueForKey:@"note"];
     }
     return  cell;
+}
+//UITableView是允许编辑的
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+//编辑时的回调方法
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    //删除数据库内容和数组的内容
+    int Id = [arrayWithAllResult[indexPath.row][@"id"] intValue];
+    [myDB deleteTableDatawithID:Id];
+    [arrayWithAllResult removeObjectAtIndex:indexPath.row];
+    [_mainTableVie deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
 }
 //点击cell中的图片，放大，可以滚动查看
 -(void)showImageDetail:(id)sender{
@@ -306,6 +318,11 @@
     [self performSegueWithIdentifier:@"showeditviewcontroller" sender:nil];
     
 }
+//点击删除按钮
+- (IBAction)deleteBtnClick:(UIButton *)sender {
+    NSIndexPath *path = [self getIndexPath:sender];
+    [self tableView:_mainTableVie commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:path];
+}
 //根据view获取到view所在的tableViewcell，方法返回cell的indexpath
 -(NSIndexPath*)getIndexPath:(UIView*)view{
     id tempView = [view superview];
@@ -320,9 +337,13 @@
 }
 //查询数据库，并更新更新视图
 -(void)queryTableAndUpdateTableView{
-    myDB = [MyDB sharedDBManager];
     [arrayWithAllResult removeAllObjects];
     arrayWithAllResult = [NSMutableArray arrayWithArray:[myDB queryAll]];
+    if (arrayWithAllResult.count) {
+        _lineLabel.hidden = NO;
+    }else{
+        _lineLabel.hidden = YES;
+    }
     for (NSDictionary *perDic in arrayWithAllResult) {
         if ([[perDic valueForKey:@"kinds"] isEqualToString:@"收入"]) {
             totalIncome +=  [[perDic valueForKey:@"price"] floatValue];
@@ -332,6 +353,8 @@
     }
     _totalIncomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalIncome];
     _totalOutcomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalOutcome];
+    //
+    [arrayWithAllResult sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]]];
     [_mainTableVie reloadData];
 }
 @end

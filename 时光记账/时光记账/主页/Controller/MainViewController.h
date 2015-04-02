@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalIncomeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalOutcomeLabel;
 - (IBAction)editBtnClick:(UIButton *)sender;
+- (IBAction)deleteBtnClick:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *lineLabel;
 
 @end
 

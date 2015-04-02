@@ -165,7 +165,6 @@
                         [self dismissViewControllerAnimated:YES completion:nil];
                     }
                 }
-                NSLog(@"就是这么多钱 -------> %0.1f",priceFloatNum);
             }
             break;
             //小数点 。
