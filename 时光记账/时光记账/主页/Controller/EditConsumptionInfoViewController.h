@@ -10,4 +10,5 @@
 
 @interface EditConsumptionInfoViewController : UIViewController
 
+- (IBAction)backBtnClick:(UIButton *)sender;
 @end

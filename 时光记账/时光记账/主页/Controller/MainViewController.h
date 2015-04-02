@@ -17,6 +17,7 @@
 - (IBAction)addNewCount:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *totalIncomeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalOutcomeLabel;
+- (IBAction)editBtnClick:(UIButton *)sender;
 
 @end
 

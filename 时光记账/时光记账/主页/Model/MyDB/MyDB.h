@@ -13,6 +13,8 @@
     NSString *_tableName;
 }
 + (instancetype)sharedDBManager;
+
+
 -(BOOL)createTable;
 -(BOOL)insertInfoToTableWithParameters:(NSDictionary *)parameters;
 - (NSDictionary *)querywithID:(int)ID;

@@ -158,9 +158,10 @@
                     [collectInfoDictionary setValue:@(priceFloatNum) forKey:@"price"];
                     
                     _myDB = [MyDB sharedDBManager];
-                    [_myDB createTable];
                     if([_myDB insertInfoToTableWithParameters:collectInfoDictionary]){
                         //跳转到首页
+                        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"isNeedRefresh"];
+                        [[NSUserDefaults standardUserDefaults]synchronize];
                         [self dismissViewControllerAnimated:YES completion:nil];
                     }
                 }

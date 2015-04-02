@@ -16,6 +16,7 @@ static MyDB * sharedDB;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         sharedDB = [[MyDB alloc]init];
+        [sharedDB createTable];
     });
     return sharedDB;
 }

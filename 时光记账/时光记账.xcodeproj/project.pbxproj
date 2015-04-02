@@ -188,12 +188,12 @@
 		F2C24D621AC23AAA005DF4F9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F2C24D891AC23BB7005DF4F9 /* MainViewController.h */,
+				F2C24D8A1AC23BB7005DF4F9 /* MainViewController.m */,
 				F2C24D851AC23BB7005DF4F9 /* CreateItemViewController.h */,
 				F2C24D861AC23BB7005DF4F9 /* CreateItemViewController.m */,
 				F2C24D871AC23BB7005DF4F9 /* EditConsumptionInfoViewController.h */,
 				F2C24D881AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m */,
-				F2C24D891AC23BB7005DF4F9 /* MainViewController.h */,
-				F2C24D8A1AC23BB7005DF4F9 /* MainViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

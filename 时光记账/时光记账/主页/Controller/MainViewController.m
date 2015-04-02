@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 #import "MyDB.h"
 @interface MainViewController (){
-
+    
     NSMutableDictionary *witchIsClicked;
     NSMutableArray *arrayWithAllResult;
     UIScrollView *detailImageScrollView;
@@ -30,23 +30,16 @@
     
     //把Button设置成原型，直接把圆角设置成正方形边长的一半即可
     _addNewCountButton.layer.cornerRadius = _addNewCountButton.frame.size.width/2;
+    
+    [self queryTableAndUpdateTableView];
+    
 }
--(void)viewDidAppear:(BOOL)animated{
-    myDB = [MyDB sharedDBManager];
-    [arrayWithAllResult removeAllObjects];
-    arrayWithAllResult = [NSMutableArray arrayWithArray:[myDB queryAll]];
-    for (NSDictionary *perDic in arrayWithAllResult) {
-        if ([[perDic valueForKey:@"kinds"] isEqualToString:@"收入"]) {
-            totalIncome +=  [[perDic valueForKey:@"price"] floatValue];
-        }else{
-            totalOutcome += [[perDic valueForKey:@"price"] floatValue];
-        }
+-(void)viewWillAppear:(BOOL)animated{
+    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"isNeedRefresh"] integerValue] == 1) {
+        [[NSUserDefaults standardUserDefaults]setObject:@"0" forKey:@"isNeedRefresh"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        [self queryTableAndUpdateTableView];
     }
-    _totalIncomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalIncome];
-    _totalOutcomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalOutcome];
-    
-    [_mainTableVie reloadData];
-    
 }
 - (void)didReceiveMemoryWarning {
     
@@ -96,9 +89,9 @@
                     [imageIncome setImage:image];
                 });
             }
-        
+            
         });
-
+        
         [kindButton setBackgroundImage:[UIImage imageNamed:@"income"] forState:UIControlStateNormal];
         inCome.text = [NSString stringWithFormat:@"￥%@ 收入",[dic valueForKey:@"price"]];
         outCome.text = nil;
@@ -127,12 +120,7 @@
     UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
     UIImageView *imageView = (UIImageView*)tap.view;
     
-    id tempView = [imageView superview];
-    while (![tempView isKindOfClass:[UITableViewCell class]]){
-        tempView = [tempView superview];
-    }
-    UITableViewCell *cell = (UITableViewCell*)tempView;
-    NSIndexPath *path = [_mainTableVie indexPathForCell:cell];
+    NSIndexPath *path = [self getIndexPath:imageView];
     UIImage *detailImage = [UIImage imageWithData:[[arrayWithAllResult objectAtIndex:path.row] valueForKey:@"picture"]];
     
     CGPoint location = [tap locationInView:self.view];
@@ -144,7 +132,7 @@
     NSArray *numArray = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%f",location.x-5],[NSString stringWithFormat:@"%f",location.y-5], [NSString stringWithFormat:@"%f",imageView.frame.size.width],[NSString stringWithFormat:@"%f",imageView.frame.size.height],nil];
     
     [[NSUserDefaults standardUserDefaults] setObject:numArray forKey:@"originframe"];
-     
+    
     
     [detailImageScrollView addSubview:detailImageView];
     [self.view addSubview:detailImageScrollView];
@@ -176,14 +164,9 @@
 //点击消费类型图标按键
 - (IBAction)titleIconBtnClick:(UIButton *)sender {
     
-    //直至获取到sender的父ViewUITableViewCell
-    id tempView = [sender superview];
-    while (![tempView isKindOfClass:[UITableViewCell class]]){
-        
-        tempView = [tempView superview];
-    }
-    UITableViewCell *cell = (UITableViewCell*)tempView;
-    NSIndexPath *path = [_mainTableVie indexPathForCell:cell];
+    
+    NSIndexPath *path = [self getIndexPath:sender];
+    UITableViewCell *cell = [_mainTableVie cellForRowAtIndexPath:path];
     //消费
     UILabel *expenditureLabel = (UILabel*)[cell viewWithTag:101];
     //收入
@@ -224,7 +207,7 @@
             }];
         }];
     }else{
-         [witchIsClicked setValue:@0 forKey:[NSString stringWithFormat:@"%ld",(long)path.row]];
+        [witchIsClicked setValue:@0 forKey:[NSString stringWithFormat:@"%ld",(long)path.row]];
         //恢复位置
         CGRect rectDeleteButton = deleteButton.frame;
         CGRect rectEditButton = editButton.frame;
@@ -263,26 +246,17 @@
     
     [self closeAlready];
     
-    
-    BOOL stillClicked = NO;
-    for (NSValue *value in witchIsClicked) {
-        if([[witchIsClicked valueForKey:[NSString stringWithFormat:@"%@",value]] isEqualToValue:@1]){
-            stillClicked =  YES;
-        }
-    }
-    if (!stillClicked) {
-        [_mainTableVie setScrollEnabled:YES];
-        [UIView animateWithDuration:0.5 animations:^{
-            CABasicAnimation* rotationAnimation;
-            rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-            rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 0.5 ];
-            [sender.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
-        } completion:^(BOOL finished) {
-            [self performSegueWithIdentifier:@"showcreateitemviewcontroller" sender:self];
+    [_mainTableVie setScrollEnabled:YES];
+    [UIView animateWithDuration:0.5 animations:^{
+        CABasicAnimation* rotationAnimation;
+        rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+        rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 0.5 ];
+        [sender.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    } completion:^(BOOL finished) {
+        [self performSegueWithIdentifier:@"showcreateitemviewcontroller" sender:self];
         
-        }];
-    }
-   
+    }];
+    
 }
 //关闭其他所有已经展开的
 -(void)closeAlready{
@@ -321,5 +295,43 @@
             }];
         }
     }
+    [_mainTableVie setScrollEnabled:YES];
+}
+- (IBAction)editBtnClick:(UIButton *)sender {
+    //关闭已经展开的
+    [self closeAlready];
+    
+    NSIndexPath *path = [self getIndexPath:sender];
+    
+    [self performSegueWithIdentifier:@"showeditviewcontroller" sender:nil];
+    
+}
+//根据view获取到view所在的tableViewcell，方法返回cell的indexpath
+-(NSIndexPath*)getIndexPath:(UIView*)view{
+    id tempView = [view superview];
+    while (![tempView isKindOfClass:[UITableViewCell class]]){
+        
+        tempView = [tempView superview];
+    }
+    UITableViewCell *cell = (UITableViewCell*)tempView;
+    NSIndexPath *path = [_mainTableVie indexPathForCell:cell];
+    
+    return path;
+}
+//查询数据库，并更新更新视图
+-(void)queryTableAndUpdateTableView{
+    myDB = [MyDB sharedDBManager];
+    [arrayWithAllResult removeAllObjects];
+    arrayWithAllResult = [NSMutableArray arrayWithArray:[myDB queryAll]];
+    for (NSDictionary *perDic in arrayWithAllResult) {
+        if ([[perDic valueForKey:@"kinds"] isEqualToString:@"收入"]) {
+            totalIncome +=  [[perDic valueForKey:@"price"] floatValue];
+        }else{
+            totalOutcome += [[perDic valueForKey:@"price"] floatValue];
+        }
+    }
+    _totalIncomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalIncome];
+    _totalOutcomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalOutcome];
+    [_mainTableVie reloadData];
 }
 @end
