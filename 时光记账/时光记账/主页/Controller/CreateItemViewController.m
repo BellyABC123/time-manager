@@ -329,12 +329,12 @@
     center.y += 58;
     snapshot.center = center;
     [self.view addSubview:snapshot];
-    center.x = 25;
+    center.x = 24;
     center.y = self.view.bounds.size.height - 193;
     
     [UIView animateWithDuration:0.5 animations:^{
         snapshot.center = center;
-        snapshot.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
+        snapshot.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
     }completion:^(BOOL finished) {
         _itemTitleLabel.text = typeArray[indexPath.row];
         

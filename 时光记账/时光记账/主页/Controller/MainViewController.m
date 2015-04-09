@@ -7,12 +7,14 @@
 //
 
 #import "MainViewController.h"
+
 #import "MyDB.h"
 @interface MainViewController (){
     
     NSMutableDictionary *witchIsClicked;
     NSMutableArray *arrayWithAllResult;
     UIScrollView *detailImageScrollView;
+    NSString *dateStr;
     float totalIncome;
     float totalOutcome;
     MyDB *myDB;
@@ -24,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      myDB = [MyDB sharedDBManager];
+    
     witchIsClicked = [NSMutableDictionary dictionaryWithCapacity:10];
     //去除tableviewcell的分割线
     [_mainTableVie setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -34,6 +37,7 @@
     
 }
 -(void)viewWillAppear:(BOOL)animated{
+    dateStr = @"";
     if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"isNeedRefresh"] integerValue] == 1) {
         [[NSUserDefaults standardUserDefaults]setObject:@"0" forKey:@"isNeedRefresh"];
         [[NSUserDefaults standardUserDefaults]synchronize];
@@ -65,6 +69,10 @@
     UIImageView *imageIncome = (UIImageView *)[cell viewWithTag:202];
     UIImageView *imageOutcome = (UIImageView *)[cell viewWithTag:203];
     
+    UILabel *dateLabel = (UILabel*)[cell viewWithTag:110];
+    UILabel *pointLabel = (UILabel*)[cell viewWithTag:111];
+    
+    
     //设置两个imageView的单机手势
     imageOutcome.userInteractionEnabled = YES;
     imageIncome.userInteractionEnabled = YES;
@@ -79,6 +87,17 @@
     [imageOutcome setImage:nil];
     
     NSDictionary *dic  = [NSDictionary dictionaryWithDictionary:[arrayWithAllResult objectAtIndex:indexPath.row]];
+    
+    if ([dateStr isEqualToString:[dic valueForKey:@"date"]]) {
+        pointLabel.hidden = YES;
+        dateLabel.hidden = YES;
+    }else{
+        pointLabel.hidden = NO;
+        dateLabel.hidden = NO;
+        dateLabel.text = [dic valueForKey:@"date"];
+        dateStr = [dic valueForKey:@"date"];
+    }
+    
     if ([[dic valueForKey:@"kinds"] isEqualToString:@"收入"]) {
         [imageIncome setImage:nil];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -125,7 +144,6 @@
     [myDB deleteTableDatawithID:Id];
     [arrayWithAllResult removeObjectAtIndex:indexPath.row];
     [_mainTableVie deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    
 }
 //点击cell中的图片，放大，可以滚动查看
 -(void)showImageDetail:(id)sender{
@@ -314,8 +332,8 @@
     [self closeAlready];
     
     NSIndexPath *path = [self getIndexPath:sender];
-    
-    [self performSegueWithIdentifier:@"showeditviewcontroller" sender:nil];
+    NSMutableDictionary *clickItemInfo = [arrayWithAllResult objectAtIndex:path.row];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
 }
 //点击删除按钮

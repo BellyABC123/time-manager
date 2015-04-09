@@ -12,14 +12,15 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableVie;
 @property (weak, nonatomic) IBOutlet UIButton *addNewCountButton;
-
-- (IBAction)titleIconBtnClick:(UIButton *)sender;
-- (IBAction)addNewCount:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *totalIncomeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalOutcomeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lineLabel;
+
 - (IBAction)editBtnClick:(UIButton *)sender;
 - (IBAction)deleteBtnClick:(UIButton *)sender;
-@property (weak, nonatomic) IBOutlet UILabel *lineLabel;
+- (IBAction)titleIconBtnClick:(UIButton *)sender;
+- (IBAction)addNewCount:(UIButton *)sender;
+
 
 @end
 

@@ -27,7 +27,6 @@
 		F2C24D831AC23BAF005DF4F9 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D7B1AC23BAF005DF4F9 /* FMResultSet.m */; };
 		F2C24D841AC23BAF005DF4F9 /* MyDB.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D7E1AC23BAF005DF4F9 /* MyDB.m */; };
 		F2C24D8B1AC23BB7005DF4F9 /* CreateItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D861AC23BB7005DF4F9 /* CreateItemViewController.m */; };
-		F2C24D8C1AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D881AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m */; };
 		F2C24D8D1AC23BB7005DF4F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24D8A1AC23BB7005DF4F9 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -77,8 +76,6 @@
 		F2C24D7E1AC23BAF005DF4F9 /* MyDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDB.m; sourceTree = "<group>"; };
 		F2C24D851AC23BB7005DF4F9 /* CreateItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateItemViewController.h; sourceTree = "<group>"; };
 		F2C24D861AC23BB7005DF4F9 /* CreateItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateItemViewController.m; sourceTree = "<group>"; };
-		F2C24D871AC23BB7005DF4F9 /* EditConsumptionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditConsumptionInfoViewController.h; sourceTree = "<group>"; };
-		F2C24D881AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditConsumptionInfoViewController.m; sourceTree = "<group>"; };
 		F2C24D891AC23BB7005DF4F9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		F2C24D8A1AC23BB7005DF4F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,8 +189,6 @@
 				F2C24D8A1AC23BB7005DF4F9 /* MainViewController.m */,
 				F2C24D851AC23BB7005DF4F9 /* CreateItemViewController.h */,
 				F2C24D861AC23BB7005DF4F9 /* CreateItemViewController.m */,
-				F2C24D871AC23BB7005DF4F9 /* EditConsumptionInfoViewController.h */,
-				F2C24D881AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -358,7 +353,6 @@
 				F2C24D831AC23BAF005DF4F9 /* FMResultSet.m in Sources */,
 				F263687F1A79CDBB00DC418F /* main.m in Sources */,
 				F2C24D8B1AC23BB7005DF4F9 /* CreateItemViewController.m in Sources */,
-				F2C24D8C1AC23BB7005DF4F9 /* EditConsumptionInfoViewController.m in Sources */,
 				F2C24D801AC23BAF005DF4F9 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
