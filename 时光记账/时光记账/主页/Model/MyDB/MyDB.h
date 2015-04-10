@@ -14,11 +14,11 @@
 }
 + (instancetype)sharedDBManager;
 
-
 -(BOOL)createTable;
 -(BOOL)insertInfoToTableWithParameters:(NSDictionary *)parameters;
+-(BOOL)deleteTableDatawithID:(int)ID;
+-(BOOL)editTableDataWithID:(NSDictionary *)dicInfo;
+
 - (NSDictionary *)querywithID:(int)ID;
 - (NSMutableArray *)queryAll;
-- (BOOL)deleteTableDatawithID:(int)ID;
-
 @end

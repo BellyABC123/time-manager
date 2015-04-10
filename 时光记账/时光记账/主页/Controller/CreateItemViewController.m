@@ -16,11 +16,12 @@
     UIPickerView *selectGetPictureMethod;
     
     NSMutableArray *typeArray;
-    NSMutableDictionary *collectInfoDictionary;
+    
     float price;
     float totalPrice;
     BOOL _isTaped;
     BOOL isPointClick;
+    BOOL isEdit;
     MyDB *_myDB;
 }
 
@@ -31,30 +32,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    collectInfoDictionary = [NSMutableDictionary dictionary];
+    
     _isTaped = NO;
     isPointClick = NO;
+    
     //读取plist文件内容
     NSString *pathForPlist = [[NSBundle mainBundle]pathForResource:@"consumptiontype" ofType:@"plist"];
     typeArray = [[NSMutableArray alloc]initWithContentsOfFile:pathForPlist];
     
-    
-    //默认是一般的消费类型
-    [collectInfoDictionary setValue:typeArray[0] forKey:@"kinds"];
-    
-    //默认日期为当前
-    NSDate *today = [NSDate date];
-    NSTimeZone *zone = [NSTimeZone systemTimeZone];
-    NSInteger interval = [zone secondsFromGMTForDate:today];
-    NSDate *selectedDate = [today  dateByAddingTimeInterval: interval];
-    NSString *select = [[NSString stringWithFormat:@"%@",selectedDate]substringToIndex:10];
-    [collectInfoDictionary setValue:select forKey:@"date"];
-    
-    //默认备注为空
-    [collectInfoDictionary setValue:@"" forKey:@"note"];
-    
-    //默认拍照片为空
-    [collectInfoDictionary setValue:[NSData data] forKey:@"picture"];
+    if ([[[NSUserDefaults standardUserDefaults]valueForKey:@"edit"] isEqualToString:@"1"]) {
+        isEdit = YES;
+        [[NSUserDefaults standardUserDefaults]setValue:@"0" forKey:@"edit"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        [_priceLabel setText:[NSString stringWithFormat:@"¥%.1f",[[_collectInfoDictionary objectForKey:@"price"]floatValue]]];
+        [_itemTitleLabel setText:[_collectInfoDictionary objectForKey:@"kinds"]];
+    }else{
+        isEdit = NO;
+        //默认是一般的消费类型
+        _collectInfoDictionary = [NSMutableDictionary dictionary];
+        [_collectInfoDictionary setValue:typeArray[0] forKey:@"kinds"];
+        //默认日期为当前
+        NSDate *today = [NSDate date];
+        NSTimeZone *zone = [NSTimeZone systemTimeZone];
+        NSInteger interval = [zone secondsFromGMTForDate:today];
+        NSDate *selectedDate = [today  dateByAddingTimeInterval: interval];
+        NSString *select = [[NSString stringWithFormat:@"%@",selectedDate]substringToIndex:10];
+        [_collectInfoDictionary setValue:select forKey:@"date"];
+        
+        //默认备注为空
+        [_collectInfoDictionary setValue:@"" forKey:@"note"];
+        
+        //默认拍照片为空
+        [_collectInfoDictionary setValue:[NSData data] forKey:@"picture"];
+    }
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapGesture)];
     tapGesture.numberOfTapsRequired = 1;
@@ -143,6 +153,7 @@
             break;
             //OK // =
         case 15:
+            
             isPointClick = NO;
             if ([sender.titleLabel.text isEqualToString:@"="]) {
                 totalPrice = price+priceFloatNum;
@@ -155,16 +166,24 @@
                 }else{
                     _isTaped = YES;
                     [self hidenTopViewAndKeyboardView];
-                    [collectInfoDictionary setValue:@(priceFloatNum) forKey:@"price"];
-                    
-                    _myDB = [MyDB sharedDBManager];
-                    if([_myDB insertInfoToTableWithParameters:collectInfoDictionary]){
-                        //跳转到首页
+                    [_collectInfoDictionary setValue:@(priceFloatNum) forKey:@"price"];
+                    if(isEdit){
                         [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"isNeedRefresh"];
                         [[NSUserDefaults standardUserDefaults]synchronize];
+                        _myDB = [MyDB sharedDBManager];
+                        [_myDB editTableDataWithID:_collectInfoDictionary];
                         [self dismissViewControllerAnimated:YES completion:nil];
+                    }else{
+                        _myDB = [MyDB sharedDBManager];
+                        if([_myDB insertInfoToTableWithParameters:_collectInfoDictionary]){
+                            //跳转到首页
+                            [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"isNeedRefresh"];
+                            [[NSUserDefaults standardUserDefaults]synchronize];
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                        }
                     }
                 }
+                
             }
             break;
             //小数点 。
@@ -221,13 +240,13 @@
         UITextField * remarkField = remarkController.textFields.firstObject;
         NSString *getRemarkText = [remarkField.text description];
         if (getRemarkText.length != 0) {
-            [collectInfoDictionary setValue:getRemarkText forKey:@"note"];
+            [_collectInfoDictionary setValue:getRemarkText forKey:@"note"];
         }
     }];
     [remarkController addAction:cancelAction];
     [remarkController addAction:okAction];
     
-   [self presentViewController:remarkController animated:YES completion:nil];
+    [self presentViewController:remarkController animated:YES completion:nil];
 }
 //相机
 - (IBAction)cameraBtnClick:(UIButton *)sender {
@@ -241,7 +260,7 @@
         imagePickerController.delegate = self;
         imagePickerController.allowsEditing=YES;
         [self presentViewController:imagePickerController animated:YES completion:nil];
-
+        
     }];
     UIAlertAction *archiveAction = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         //调用相册
@@ -254,7 +273,7 @@
     [pickPictureController addAction:cancelAction];
     [pickPictureController addAction:deleteAction];
     [pickPictureController addAction:archiveAction];
-
+    
     [self presentViewController:pickPictureController animated:YES completion:nil];
 }
 
@@ -294,7 +313,7 @@
         selectedDate = [selectedDate  dateByAddingTimeInterval: interval];
         
         NSString *select = [[NSString stringWithFormat:@"%@",selectedDate]substringToIndex:10];
-        [collectInfoDictionary setValue:select forKey:@"date"];
+        [_collectInfoDictionary setValue:select forKey:@"date"];
         [self hidethecalendarview];
     }
 }
@@ -339,7 +358,7 @@
         _itemTitleLabel.text = typeArray[indexPath.row];
         
         //把消费者种类加入到搜集字典中
-        [collectInfoDictionary setValue:[typeArray objectAtIndex:indexPath.row] forKey:@"kinds"];
+        [_collectInfoDictionary setValue:[typeArray objectAtIndex:indexPath.row] forKey:@"kinds"];
         
         [UIView animateWithDuration:0.2 animations:^{
             snapshot.alpha = 0.0;
@@ -496,7 +515,7 @@
     UIImage *image=[info objectForKey:@"UIImagePickerControllerEditedImage"];
     //把图片转化成二进制
     NSData *dataImg = UIImagePNGRepresentation(image);
-    [collectInfoDictionary setValue:dataImg forKey:@"picture"];
+    [_collectInfoDictionary setValue:dataImg forKey:@"picture"];
     
     [self dismissViewControllerAnimated:YES completion:NULL];
 }

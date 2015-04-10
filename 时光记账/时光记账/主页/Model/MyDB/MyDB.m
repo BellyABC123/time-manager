@@ -107,13 +107,36 @@ static MyDB * sharedDB;
         NSString *deleteSql = [NSString stringWithFormat:@"DELETE FROM myCheck WHERE ID = %ld",(long)ID];
         BOOL res = [_db executeUpdate:deleteSql];
         
-        if (!res) {
-            NSLog(@"删除ID:%d出错",ID);
-        } else {
+        if (res) {
             NSLog(@"删除ID:%d成功",ID);
+            [_db close];
+            return YES;
+        }else {
+            NSLog(@"删除ID:%d失败",ID);
+            [_db close];
         }
-        [_db close];
+        
     }
-    return YES;
+    return NO;
+}
+//根据id修改数据
+-(BOOL)editTableDataWithID:(NSDictionary *)dicInfo{
+    if ([_db open]) {
+        NSString *editSql = [NSString stringWithFormat:@"UPDATE myCheck SET DATE = ?,KINDS = ?,PRICE = ?,NOTE = ?,PICTURE = ? WHERE ID = %d",[dicInfo[@"id"]intValue]];
+        BOOL isSuccess = [_db executeUpdate:editSql,
+                          dicInfo[@"date"],
+                          dicInfo[@"kinds"],
+                          dicInfo[@"price"],
+                          dicInfo[@"note"],
+                          dicInfo[@"picture"]
+                          ];
+        if (isSuccess) {
+            [_db close];
+            return YES;
+        }else{
+            [_db close];
+        }
+    }
+    return NO;
 }
 @end

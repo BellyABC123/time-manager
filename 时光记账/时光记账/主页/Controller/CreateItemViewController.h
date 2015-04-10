@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 
+@property (strong,nonatomic) NSMutableDictionary *collectInfoDictionary;
+
 - (IBAction)backBtnClick:(UIButton *)sender;
 - (IBAction)keboardBtnClick:(UIButton *)sender;
 - (IBAction)calendarBtnClick:(UIButton *)sender;

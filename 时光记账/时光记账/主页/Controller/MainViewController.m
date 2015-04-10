@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-
+#import "CreateItemViewController.h"
 #import "MyDB.h"
 @interface MainViewController (){
     
@@ -143,6 +143,26 @@
     int Id = [arrayWithAllResult[indexPath.row][@"id"] intValue];
     [myDB deleteTableDatawithID:Id];
     [arrayWithAllResult removeObjectAtIndex:indexPath.row];
+    
+    //更新数据----------------------------------------------------------------------------
+    totalIncome = 0;
+    totalOutcome = 0;
+    if (arrayWithAllResult.count) {
+        _lineLabel.hidden = NO;
+    }else{
+        _lineLabel.hidden = YES;
+    }
+    for (NSDictionary *perDic in arrayWithAllResult) {
+        if ([[perDic valueForKey:@"kinds"] isEqualToString:@"收入"]) {
+            totalIncome +=  [[perDic valueForKey:@"price"] floatValue];
+        }else{
+            totalOutcome += [[perDic valueForKey:@"price"] floatValue];
+        }
+    }
+    _totalIncomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalIncome];
+    _totalOutcomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalOutcome];
+    //------------------------------------------------------------------------------------
+    
     [_mainTableVie deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 //点击cell中的图片，放大，可以滚动查看
@@ -330,14 +350,17 @@
 - (IBAction)editBtnClick:(UIButton *)sender {
     //关闭已经展开的
     [self closeAlready];
-    
+    [[NSUserDefaults standardUserDefaults]setValue:@"1" forKey:@"edit"];
     NSIndexPath *path = [self getIndexPath:sender];
     NSMutableDictionary *clickItemInfo = [arrayWithAllResult objectAtIndex:path.row];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
+    CreateItemViewController *createItemViewController = [storyBoard instantiateViewControllerWithIdentifier:@"createitemviewcontroller"];
+    createItemViewController.collectInfoDictionary = clickItemInfo;
+    [self presentViewController:createItemViewController animated:YES completion:nil];
 }
 //点击删除按钮
 - (IBAction)deleteBtnClick:(UIButton *)sender {
+    [self closeAlready];
     NSIndexPath *path = [self getIndexPath:sender];
     [self tableView:_mainTableVie commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:path];
 }
@@ -357,6 +380,8 @@
 -(void)queryTableAndUpdateTableView{
     [arrayWithAllResult removeAllObjects];
     arrayWithAllResult = [NSMutableArray arrayWithArray:[myDB queryAll]];
+    totalIncome = 0;
+    totalOutcome = 0;
     if (arrayWithAllResult.count) {
         _lineLabel.hidden = NO;
     }else{
