@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -17,19 +17,9 @@
                         <constraint firstAttribute="height" constant="25" id="wLY-CL-S1E"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="vKF-1e-Obe">
-                    <rect key="frame" x="197" y="47" width="86" height="114"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="114" id="5pE-hY-PDH"/>
-                        <constraint firstAttribute="width" constant="86" id="Cq2-eL-vHx"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="vKF-1e-Obe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="47" id="5Wk-kR-SQc"/>
-                <constraint firstAttribute="centerX" secondItem="vKF-1e-Obe" secondAttribute="centerX" id="7jA-GW-vL1"/>
                 <constraint firstAttribute="centerX" secondItem="Pf5-bg-TaI" secondAttribute="centerX" id="Gdd-RP-9c1"/>
                 <constraint firstAttribute="bottom" secondItem="Pf5-bg-TaI" secondAttribute="bottom" constant="15" id="gU7-JF-ele"/>
             </constraints>
@@ -39,7 +29,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo" width="133" height="152"/>
         <image name="welcome_logo" width="68" height="19"/>
     </resources>
 </document>
