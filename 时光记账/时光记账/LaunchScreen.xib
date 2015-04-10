@@ -13,21 +13,24 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="时光记账" translatesAutoresizingMaskIntoConstraints="NO" id="b1T-cJ-U7U">
                     <rect key="frame" x="0.0" y="0.0" width="386" height="599"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_logo" translatesAutoresizingMaskIntoConstraints="NO" id="y0J-UB-8j2">
-                    <rect key="frame" x="154" y="579" width="79" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时光记账" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGs-95-QZ8">
+                    <rect key="frame" x="155" y="559" width="77" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="79" id="TY8-gf-QzM"/>
-                        <constraint firstAttribute="height" constant="20" id="ujC-TH-6qI"/>
+                        <constraint firstAttribute="height" constant="22" id="e7Q-JM-RoR"/>
+                        <constraint firstAttribute="width" constant="77" id="fPP-nT-UZN"/>
                     </constraints>
-                </imageView>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="y0J-UB-8j2" secondAttribute="centerX" id="6Sl-ur-a7B"/>
                 <constraint firstItem="b1T-cJ-U7U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8nG-5y-3n0"/>
-                <constraint firstAttribute="bottom" secondItem="y0J-UB-8j2" secondAttribute="bottom" id="Do3-Ih-85G"/>
                 <constraint firstAttribute="trailing" secondItem="b1T-cJ-U7U" secondAttribute="trailing" id="NIl-88-Uth"/>
+                <constraint firstAttribute="bottom" secondItem="aGs-95-QZ8" secondAttribute="bottom" constant="18" id="b4n-1t-v3s"/>
                 <constraint firstItem="b1T-cJ-U7U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ij8-8c-xgJ"/>
+                <constraint firstAttribute="centerX" secondItem="aGs-95-QZ8" secondAttribute="centerX" id="mSP-nl-n21"/>
                 <constraint firstAttribute="bottom" secondItem="b1T-cJ-U7U" secondAttribute="bottom" id="qqG-Hb-vka"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -36,7 +39,6 @@
         </view>
     </objects>
     <resources>
-        <image name="welcome_logo" width="68" height="19"/>
         <image name="时光记账" width="489" height="925"/>
     </resources>
 </document>
