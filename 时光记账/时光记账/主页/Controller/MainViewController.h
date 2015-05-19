@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalIncomeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalOutcomeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lineLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cktjLabel;
 
 - (IBAction)editBtnClick:(UIButton *)sender;
 - (IBAction)deleteBtnClick:(UIButton *)sender;

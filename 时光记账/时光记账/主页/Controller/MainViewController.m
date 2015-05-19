@@ -32,7 +32,9 @@
     [_mainTableVie setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     //把Button设置成原型，直接把圆角设置成正方形边长的一半即可
     _addNewCountButton.layer.cornerRadius = _addNewCountButton.frame.size.width/2;
-    
+    _cktjLabel.layer.cornerRadius = 10;
+    _cktjLabel.layer.borderWidth = 1;
+    _cktjLabel.layer.borderColor = [UIColor greenColor].CGColor;
     [self queryTableAndUpdateTableView];
     
 }

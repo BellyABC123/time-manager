@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F24BF1291A7B0DD900E0767A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F24BF1281A7B0DD900E0767A /* libsqlite3.dylib */; };
+		F25485A21B0ACEDB0047D485 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25485A11B0ACEDB0047D485 /* StatisticsViewController.m */; };
 		F258EAE41AB2C5CE00855F07 /* consumptiontype.plist in Resources */ = {isa = PBXBuildFile; fileRef = F258EAE31AB2C5CE00855F07 /* consumptiontype.plist */; };
 		F263687F1A79CDBB00DC418F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F263687E1A79CDBB00DC418F /* main.m */; };
 		F26368821A79CDBB00DC418F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F26368811A79CDBB00DC418F /* AppDelegate.m */; };
@@ -42,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		F24BF1281A7B0DD900E0767A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F25485A01B0ACEDB0047D485 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
+		F25485A11B0ACEDB0047D485 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		F258EAE31AB2C5CE00855F07 /* consumptiontype.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = consumptiontype.plist; sourceTree = "<group>"; };
 		F26368791A79CDBB00DC418F /* 时光记账.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "时光记账.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F263687D1A79CDBB00DC418F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				F2C24D8A1AC23BB7005DF4F9 /* MainViewController.m */,
 				F2C24D851AC23BB7005DF4F9 /* CreateItemViewController.h */,
 				F2C24D861AC23BB7005DF4F9 /* CreateItemViewController.m */,
+				F25485A01B0ACEDB0047D485 /* StatisticsViewController.h */,
+				F25485A11B0ACEDB0047D485 /* StatisticsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				F263687F1A79CDBB00DC418F /* main.m in Sources */,
 				F2C24D8B1AC23BB7005DF4F9 /* CreateItemViewController.m in Sources */,
 				F2C24D801AC23BAF005DF4F9 /* FMDatabaseAdditions.m in Sources */,
+				F25485A21B0ACEDB0047D485 /* StatisticsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
