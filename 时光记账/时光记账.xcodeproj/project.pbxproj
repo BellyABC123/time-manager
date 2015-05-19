@@ -10,6 +10,8 @@
 		F24BF1291A7B0DD900E0767A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F24BF1281A7B0DD900E0767A /* libsqlite3.dylib */; };
 		F25485A21B0ACEDB0047D485 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25485A11B0ACEDB0047D485 /* StatisticsViewController.m */; };
 		F258EAE41AB2C5CE00855F07 /* consumptiontype.plist in Resources */ = {isa = PBXBuildFile; fileRef = F258EAE31AB2C5CE00855F07 /* consumptiontype.plist */; };
+		F259C2CB1B0AD7010028F99E /* PercentageChartLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F259C2C71B0AD7010028F99E /* PercentageChartLayer.m */; };
+		F259C2CC1B0AD7010028F99E /* PercentageChart.m in Sources */ = {isa = PBXBuildFile; fileRef = F259C2C91B0AD7010028F99E /* PercentageChart.m */; };
 		F263687F1A79CDBB00DC418F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F263687E1A79CDBB00DC418F /* main.m */; };
 		F26368821A79CDBB00DC418F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F26368811A79CDBB00DC418F /* AppDelegate.m */; };
 		F263688A1A79CDBC00DC418F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F26368891A79CDBC00DC418F /* Images.xcassets */; };
@@ -46,6 +48,10 @@
 		F25485A01B0ACEDB0047D485 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
 		F25485A11B0ACEDB0047D485 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
 		F258EAE31AB2C5CE00855F07 /* consumptiontype.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = consumptiontype.plist; sourceTree = "<group>"; };
+		F259C2C71B0AD7010028F99E /* PercentageChartLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageChartLayer.m; sourceTree = "<group>"; };
+		F259C2C81B0AD7010028F99E /* PercentageChartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageChartLayer.h; sourceTree = "<group>"; };
+		F259C2C91B0AD7010028F99E /* PercentageChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentageChart.m; sourceTree = "<group>"; };
+		F259C2CA1B0AD7010028F99E /* PercentageChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentageChart.h; sourceTree = "<group>"; };
 		F26368791A79CDBB00DC418F /* 时光记账.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "时光记账.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F263687D1A79CDBB00DC418F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F263687E1A79CDBB00DC418F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -210,6 +216,10 @@
 		F2C24D641AC23AAA005DF4F9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F259C2C71B0AD7010028F99E /* PercentageChartLayer.m */,
+				F259C2C81B0AD7010028F99E /* PercentageChartLayer.h */,
+				F259C2C91B0AD7010028F99E /* PercentageChart.m */,
+				F259C2CA1B0AD7010028F99E /* PercentageChart.h */,
 				F2C24D6A1AC23BA7005DF4F9 /* Main.storyboard */,
 				F2C24D681AC23BA7005DF4F9 /* CalendarView.h */,
 				F2C24D691AC23BA7005DF4F9 /* CalendarView.m */,
@@ -349,6 +359,8 @@
 			files = (
 				F2C24D6F1AC23BA7005DF4F9 /* MasonryViewLayout.m in Sources */,
 				F2C24D821AC23BAF005DF4F9 /* FMDatabaseQueue.m in Sources */,
+				F259C2CB1B0AD7010028F99E /* PercentageChartLayer.m in Sources */,
+				F259C2CC1B0AD7010028F99E /* PercentageChart.m in Sources */,
 				F2C24D6D1AC23BA7005DF4F9 /* CalendarView.m in Sources */,
 				F26368821A79CDBB00DC418F /* AppDelegate.m in Sources */,
 				F2C24D8D1AC23BB7005DF4F9 /* MainViewController.m in Sources */,

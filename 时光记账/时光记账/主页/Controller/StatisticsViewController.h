@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PercentageChart.h"
+@interface StatisticsViewController : UIViewController{
+    IBOutlet PercentageChart *chart;
+    IBOutlet PercentageChart *chart1;
+}
 
-@interface StatisticsViewController : UIViewController
 
 - (IBAction)backBtnClick:(UIButton *)sender;
 @end
