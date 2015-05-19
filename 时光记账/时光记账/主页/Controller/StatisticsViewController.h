@@ -13,6 +13,10 @@
     IBOutlet PercentageChart *chart1;
 }
 
+@property (weak, nonatomic) IBOutlet UILabel *allOutComeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *allIncomeLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *thisMonthOutcomeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *thisMonthIncomeLabel;
 - (IBAction)backBtnClick:(UIButton *)sender;
 @end

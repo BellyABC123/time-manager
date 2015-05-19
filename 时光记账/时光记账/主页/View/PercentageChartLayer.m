@@ -22,24 +22,6 @@
 @synthesize fontSize;
 
 
--(CABasicAnimation *)makeAnimationForKey:(NSString *)key 
-{
-	CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:key];
-	anim.fromValue = [[self presentationLayer] valueForKey:key];
-	anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-	anim.duration = 0.5;
-    
-	return anim;
-}
-
--(id<CAAction>)actionForKey:(NSString *)event 
-{
-    if ( [event isEqualToString:@"percentage"] ) 
-        return [self makeAnimationForKey:event];
-    
-    return [super actionForKey:event];
-}
-
 - (id)initWithLayer:(id)aLayer 
 {
     if (self = [super initWithLayer:aLayer]) 

@@ -578,8 +578,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="66e-Ju-OCR"/>
                     <connections>
+                        <outlet property="allIncomeLabel" destination="Ltt-NX-jIW" id="73N-xr-45Z"/>
+                        <outlet property="allOutComeLabel" destination="L21-FX-Yxq" id="sxq-rn-gd8"/>
                         <outlet property="chart" destination="icy-Kp-SCX" id="muC-kn-LEr"/>
                         <outlet property="chart1" destination="Sc7-eH-N2h" id="wBT-0K-BmR"/>
+                        <outlet property="thisMonthIncomeLabel" destination="6TG-hj-pTL" id="14W-WE-Sbl"/>
+                        <outlet property="thisMonthOutcomeLabel" destination="AGs-27-Zjo" id="JrE-iJ-B9a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDY-KJ-wVB" userLabel="First Responder" sceneMemberID="firstResponder"/>

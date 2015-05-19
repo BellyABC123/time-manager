@@ -396,7 +396,7 @@
             totalOutcome += [[perDic valueForKey:@"price"] floatValue];
         }
     }
-    _totalIncomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalIncome];
+    _totalIncomeLabel.text = [NSString stringWithFormat:@"3%0.1f",totalIncome];
     _totalOutcomeLabel.text = [NSString stringWithFormat:@"%0.1f",totalOutcome];
     //
     [arrayWithAllResult sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]]];
